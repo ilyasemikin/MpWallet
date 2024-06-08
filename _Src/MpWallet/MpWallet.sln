@@ -9,6 +9,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.UnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Currencies", "MpWallet.Currencies\MpWallet.Currencies.csproj", "{05F1BACC-2229-4B79-A0AF-51044A9BC594}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Sandbox", "MpWallet.Sandbox\MpWallet.Sandbox.csproj", "{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Values", "MpWallet.Values\MpWallet.Values.csproj", "{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Values.UnitTests", "MpWallet.Values.UnitTests\MpWallet.Values.UnitTests.csproj", "{B798BEB1-2504-4502-8CF3-81E9C23CF77B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Currencies.UnitTests", "MpWallet.Currencies.UnitTests\MpWallet.Currencies.UnitTests.csproj", "{7C202065-B5F5-4439-8A1B-F5EBA301C972}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Collections.Immutable", "MpWallet.Collections.Immutable\MpWallet.Collections.Immutable.csproj", "{677A83C5-DC45-4820-BAF3-25CF2F36C0BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Collections.Immutable.UnitTests", "MpWallet.Collections.Immutable.UnitTests\MpWallet.Collections.Immutable.UnitTests.csproj", "{31E37928-7516-4808-A910-185850639562}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +42,29 @@ Global
 		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B798BEB1-2504-4502-8CF3-81E9C23CF77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B798BEB1-2504-4502-8CF3-81E9C23CF77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B798BEB1-2504-4502-8CF3-81E9C23CF77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B798BEB1-2504-4502-8CF3-81E9C23CF77B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C202065-B5F5-4439-8A1B-F5EBA301C972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C202065-B5F5-4439-8A1B-F5EBA301C972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C202065-B5F5-4439-8A1B-F5EBA301C972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C202065-B5F5-4439-8A1B-F5EBA301C972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{677A83C5-DC45-4820-BAF3-25CF2F36C0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{677A83C5-DC45-4820-BAF3-25CF2F36C0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{677A83C5-DC45-4820-BAF3-25CF2F36C0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{677A83C5-DC45-4820-BAF3-25CF2F36C0BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E37928-7516-4808-A910-185850639562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E37928-7516-4808-A910-185850639562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E37928-7516-4808-A910-185850639562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E37928-7516-4808-A910-185850639562}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
