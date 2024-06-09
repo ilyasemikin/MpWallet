@@ -9,7 +9,7 @@ public class ImmutableCollectionTests
     [Fact]
     public void TryAdd_ShouldSuccess_WhenAddToEmpty()
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         var item = new Item("Name");
 
         var result = collection.TryAdd(item, out var newCollection);
@@ -24,7 +24,7 @@ public class ImmutableCollectionTests
     [Fact]
     public void TryAdd_ShouldFailure_WhenAddDuplicate()
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         var item = new Item("Name");
         collection.TryAdd(item, out collection!);
 
@@ -37,7 +37,7 @@ public class ImmutableCollectionTests
     [Fact]
     public void TryUpdate_ShouldSuccess_WhenUpdateExisted()
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         var item = new Item("Name");
         collection.TryAdd(item, out collection!);
 
@@ -51,7 +51,7 @@ public class ImmutableCollectionTests
     [Fact]
     public void TryUpdate_ShouldFailure_WhenUpdateNotExisted()
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         var item = new Item("Name");
 
         var result = collection.TryUpdate(item, out var newCollection);
@@ -63,7 +63,7 @@ public class ImmutableCollectionTests
     [Fact]
     public void AddOrUpdate_ShouldAdd_WhenPassNewItem()
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         var item = new Item("Name");
 
         var newCollection = collection.AddOrUpdate(item);
@@ -75,7 +75,7 @@ public class ImmutableCollectionTests
     [Fact]
     public void AddOrUpdate_ShouldUpdate_WhenPassExistedItem()
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         var item = new Item("Name");
         var updatedItem = item with { Value = 2 };
         collection.TryAdd(item, out collection!);
@@ -94,7 +94,7 @@ public class ImmutableCollectionTests
     [Fact]
     public void TryGet_ShouldSuccess_WhenRequestsExistedItem()
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         var item = new Item("Name");
         collection.TryAdd(item, out collection!);
 
@@ -107,7 +107,7 @@ public class ImmutableCollectionTests
     [Fact]
     public void TryGet_ShouldFailure_WhenRequestsNotExistedItem()
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         var item = new Item("Name");
 
         var result = collection.TryGet(item.Name, out var getItem);
@@ -200,7 +200,7 @@ public class ImmutableCollectionTests
     [MemberData(nameof(WithTestCases))]
     public void With_ShouldSuccess(IEnumerable<Item> baseItems, IEnumerable<Item> withItems, IEnumerable<Item> expected)
     {
-        var collection = new ImmutableCollection<Item>();
+        var collection = ImmutableCollection<Item>.Empty;
         foreach (var item in baseItems)
             collection.TryAdd(item, out collection!);
 

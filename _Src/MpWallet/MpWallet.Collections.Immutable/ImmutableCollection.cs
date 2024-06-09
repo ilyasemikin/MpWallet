@@ -9,17 +9,14 @@ public sealed class ImmutableCollection<T> : IEnumerable<T>
     where T : IImmutableItem
 {
     private readonly ImmutableDictionary<string, T> _items;
-
+    
     public int Count => _items.Count;
+
+    public static ImmutableCollection<T> Empty { get; } = new(ImmutableDictionary<string, T>.Empty);
     
     private ImmutableCollection(ImmutableDictionary<string, T> items)
     {
         _items = items;
-    }
-
-    public ImmutableCollection()
-        : this(ImmutableDictionary<string, T>.Empty)
-    {
     }
 
     public bool TryAdd(T item, [NotNullWhen(true)] out ImmutableCollection<T>? collection)

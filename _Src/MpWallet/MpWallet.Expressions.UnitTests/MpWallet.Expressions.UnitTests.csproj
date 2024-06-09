@@ -18,7 +18,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\MpWallet.Collections.Immutable\MpWallet.Collections.Immutable.csproj" />
+		<ProjectReference Include="..\MpWallet.Currencies\MpWallet.Currencies.csproj" />
 		<ProjectReference Include="..\MpWallet.Expressions\MpWallet.Expressions.csproj" />
+		<ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" />
 	</ItemGroup>
 
 </Project>

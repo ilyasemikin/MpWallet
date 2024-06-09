@@ -17,20 +17,9 @@ public sealed record NegationOperatorExpression(Expression Argument) : Expressio
     {
         return Argument.Calculate(context, currency) switch
         {
-            ConstantExpression constant => GetNegationConstant(constant.Value),
-            { } e => e
+            ConstantExpression constant => constant.Negotiate(),
+            NegationOperatorExpression negation => negation.Argument,
+            { } e => new NegationOperatorExpression(e)
         };
-    }
-
-    private static ConstantExpression GetNegationConstant(Value value)
-    {
-        Value negationValue = value switch
-        {
-            Number number => new Number(-number.Value),
-            Money money => new Money(-money.Value, money.Currency),
-            _ => throw new ArgumentOutOfRangeException(nameof(value))
-        };
-
-        return new ConstantExpression(negationValue);
     }
 }

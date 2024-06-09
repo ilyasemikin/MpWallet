@@ -16,7 +16,7 @@ public sealed record MultiplicationOperationExpression(Expression Multiplier, Ex
 {
     public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
     {
-        var multiplier = Multiplicand.Calculate(context, currency);
+        var multiplier = Multiplier.Calculate(context, currency);
         var multiplicand = Multiplicand.Calculate(context, currency);
 
         if (multiplier is ConstantExpression multiplierConstant && multiplicand is ConstantExpression multiplicandConstant &&

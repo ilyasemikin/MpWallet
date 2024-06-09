@@ -14,6 +14,13 @@ public sealed record Function : IImmutableItem
     public IReadOnlyList<FunctionParameter> Parameters { get; }
     public Expression Expression { get; }
 
+    public Function(string name, Expression expression)
+    {
+        Name = name;
+        Parameters = [];
+        Expression = expression;
+    }
+    
     public Function(string name, IEnumerable<FunctionParameter> parameters, Expression expression)
     {
         Name = name;

@@ -12,27 +12,31 @@ namespace MpWallet.Expressions.Context;
 
 public sealed class ExpressionCalculationContext
 {
-    public required ICurrencyRatioProvider CurrencyRatioProvider { get; init; }
-    public required ImmutableCollection<Variable> Variables { get; init; }
-    public required ImmutableCollection<Function> Functions { get; init; }
+    public ICurrencyRatioProvider CurrencyRatioProvider { get; }
+    public ImmutableCollection<Variable> Variables { get; }
+    public ImmutableCollection<Function> Functions { get; }
+    
+    public ExpressionCalculationContext(
+        ICurrencyRatioProvider currencyRatioProvider, 
+        ImmutableCollection<Variable>? variables = null,
+        ImmutableCollection<Function>? functions = null)
+    {
+        CurrencyRatioProvider = currencyRatioProvider;
+        Variables = variables ?? ImmutableCollection<Variable>.Empty;
+        Functions = functions ?? ImmutableCollection<Function>.Empty;
+    }
 
     public ExpressionCalculationContext WithVariables(ImmutableCollection<Variable> variables)
     {
-        return new ExpressionCalculationContext
-        {
-            CurrencyRatioProvider = CurrencyRatioProvider,
-            Functions = Functions,
-            Variables = variables
-        };
+        return ReferenceEquals(Variables, variables) 
+            ? this 
+            : new ExpressionCalculationContext(CurrencyRatioProvider, variables, Functions);
     }
 
     public ExpressionCalculationContext WithFunctions(ImmutableCollection<Function> functions)
     {
-        return new ExpressionCalculationContext
-        {
-            CurrencyRatioProvider = CurrencyRatioProvider,
-            Variables = Variables,
-            Functions = functions
-        };
+        return ReferenceEquals(Functions, functions)
+            ? this
+            : new ExpressionCalculationContext(CurrencyRatioProvider, Variables, functions);
     }
 }

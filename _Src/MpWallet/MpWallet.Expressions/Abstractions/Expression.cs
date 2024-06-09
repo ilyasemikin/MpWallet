@@ -28,7 +28,7 @@ public abstract record Expression
 
     public static Expression operator -(Expression left, Expression right)
     {
-        return new AdditionOperatorExpression(left, new NegationOperatorExpression(right));
+        return new SubtractionOperationExpression(left, right);
     }
 
     public static Expression operator *(Expression left, Expression right)

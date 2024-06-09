@@ -10,11 +10,11 @@ public sealed record FunctionCallExpression : Expression
 {
     public string Name { get; }
     public IReadOnlyList<Expression> Arguments { get; }
-
-    public FunctionCallExpression(string name, IEnumerable<Expression> arguments)
+    
+    public FunctionCallExpression(string name, IEnumerable<Expression>? arguments = null)
     {
         Name = name;
-        Arguments = arguments.ToList();
+        Arguments = arguments?.ToList() ?? [];
     }
 
     public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
