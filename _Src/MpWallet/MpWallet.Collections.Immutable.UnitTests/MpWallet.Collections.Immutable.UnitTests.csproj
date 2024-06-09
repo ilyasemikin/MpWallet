@@ -20,4 +20,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MpWallet.Collections.Immutable\MpWallet.Collections.Immutable.csproj" />
+  </ItemGroup>
+
 </Project>

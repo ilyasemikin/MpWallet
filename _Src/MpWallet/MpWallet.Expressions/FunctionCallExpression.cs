@@ -34,7 +34,7 @@ public sealed record FunctionCallExpression : Expression
             argumentVariables[i] = new Variable(name, expression);
         }
 
-        var functionArguments = context.Variables.WithVariables(argumentVariables);
+        var functionArguments = context.Variables.With(argumentVariables);
         var functionContext = context.WithVariables(functionArguments);
         return function.Expression.Calculate(functionContext, currency);
     }

@@ -6,16 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MpWallet.Collections.Immutable;
 
 namespace MpWallet.Expressions.Context;
 
 public sealed class ExpressionCalculationContext
 {
     public required ICurrencyRatioProvider CurrencyRatioProvider { get; init; }
-    public required ImmutableVariablesCollection Variables { get; init; }
-    public required ImmutableFunctionsCollection Functions { get; init; }
+    public required ImmutableCollection<Variable> Variables { get; init; }
+    public required ImmutableCollection<Function> Functions { get; init; }
 
-    public ExpressionCalculationContext WithVariables(ImmutableVariablesCollection variables)
+    public ExpressionCalculationContext WithVariables(ImmutableCollection<Variable> variables)
     {
         return new ExpressionCalculationContext
         {
@@ -25,7 +26,7 @@ public sealed class ExpressionCalculationContext
         };
     }
 
-    public ExpressionCalculationContext WithFunctions(ImmutableFunctionsCollection functions)
+    public ExpressionCalculationContext WithFunctions(ImmutableCollection<Function> functions)
     {
         return new ExpressionCalculationContext
         {
