@@ -188,7 +188,8 @@ public class ImmutableCollectionTests
                 {
                     new("Name2", 2),
                     new("Name1", 6),
-                    new("Name3", 3)
+                    new("Name3", 3),
+                    new("Name4", 4)
                 };
                 
                 yield return [baseItems, input, expected];
@@ -198,7 +199,7 @@ public class ImmutableCollectionTests
 
     [Theory]
     [MemberData(nameof(WithTestCases))]
-    public void With_ShouldSuccess(IEnumerable<Item> baseItems, IEnumerable<Item> withItems, IEnumerable<Item> expected)
+    public void With_ShouldSuccess(IEnumerable<Item> baseItems, IEnumerable<Item> withItems, IReadOnlyList<Item> expected)
     {
         var collection = ImmutableCollection<Item>.Empty;
         foreach (var item in baseItems)
@@ -207,6 +208,12 @@ public class ImmutableCollectionTests
         var newCollection = collection.With(withItems);
 
         Assert.NotNull(newCollection);
-        Assert.NotStrictEqual(expected, newCollection);
+        Assert.Distinct(newCollection);
+
+        Assert.Equal(expected.Count, newCollection.Count);
+
+        var set = newCollection.ToHashSet();
+        var expectedSet = expected.ToHashSet();
+        Assert.Equal(expectedSet, set);
     }
 }

@@ -1,12 +1,9 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Currencies.Services.Abstractions;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MpWallet.Values.Implementations;
+using NuGet.Frameworks;
 
 namespace MpWallet.Values.UnitTests;
 
@@ -111,5 +108,73 @@ public sealed class MoneyTests
         var @string = money.ToString(format, formatProvider);
 
         Assert.Equal(@string, expectedString);
+    }
+
+    public static IEnumerable<object[]> TryParseSuccessCases
+    {
+        get
+        {
+            foreach (var currency in Currency.All)
+            {
+                yield return [$"100 {currency.Symbol}", new Money(100M, currency)];
+                yield return [$"100 {currency.Code}", new Money(100M, currency)];
+            }
+            
+            yield return ["1.1$", new Money(1.1M, Currency.USD)];
+            yield return ["1.1USD", new Money(1.1M, Currency.USD)];
+            yield return ["1.1 $", new Money(1.1M, Currency.USD)];
+            yield return ["10000.1 $", new Money(10000.1M, Currency.USD)];
+            yield return ["1.10000000 $", new Money(1.1M, Currency.USD)];
+            yield return ["1.10000001 $", new Money(1.10000001M, Currency.USD)];
+            yield return ["1   $", new Money(1, Currency.USD)];
+        }
+    }
+    
+    [Theory]
+    [MemberData(nameof(TryParseSuccessCases))]
+    public void TryParse_ShouldSuccess_WhenPassCorrect(string input, Money expected)
+    {
+        var result = Money.TryParse(input, out var actual);
+        
+        Assert.True(result);
+        Assert.NotNull(actual);
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void TryParse_ShouldSuccess_WhenPassCorrectWithFormatProvider()
+    {
+        var expected = new Money(1.1M, Currency.USD);
+        
+        var result = Money.TryParse("1,1 $", new CultureInfo("ru-RU"), out var actual);
+
+        Assert.True(result);
+        Assert.NotNull(actual);
+        Assert.Equal(expected, actual);
+    }
+
+    public static IEnumerable<object[]> TryParseFailureCases
+    {
+        get
+        {
+            yield return ["1,1 $"];
+            yield return ["1.1.1 $"];
+            yield return ["1,1,1 $"];
+            yield return ["1 1 $"];
+            yield return ["1"];
+            yield return [string.Empty];
+            yield return [".5 $"];
+            yield return ["1. $"];
+        }
+    }
+    
+    [Theory]
+    [MemberData(nameof(TryParseFailureCases))]
+    public void TryParse_ShouldFailure_WhenPassInvalid(string input)
+    {
+        var result = Money.TryParse(input, out var actual);
+        
+        Assert.False(result);
+        Assert.Null(actual);
     }
 }

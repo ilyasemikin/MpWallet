@@ -14,7 +14,7 @@ public sealed record FunctionCallExpression : Expression
     public FunctionCallExpression(string name, IEnumerable<Expression>? arguments = null)
     {
         Name = name;
-        Arguments = arguments?.ToList() ?? [];
+        Arguments = arguments?.ToArray() ?? [];
     }
 
     public override Expression Calculate(ExpressionCalculationContext context, Currency currency)

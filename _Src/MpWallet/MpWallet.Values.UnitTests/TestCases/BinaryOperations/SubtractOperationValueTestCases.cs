@@ -1,5 +1,6 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Values.Abstractions;
+using MpWallet.Values.Implementations;
 using MpWallet.Values.UnitTests.TestCases.BinaryOperations.Abstractions;
 
 namespace MpWallet.Values.UnitTests.TestCases.BinaryOperations;

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MpWallet.Currencies;
 
@@ -21,18 +16,20 @@ public sealed class CurrenciesCollection : IEnumerable<Currency>
     {
         _currencies = currencies.ToArray();
         
-        _currenciesByCode = _currencies.ToDictionary(c => c.Code);
-        _currenciesBySymbol = _currencies.ToDictionary(c => c.Symbol);
+        _currenciesByCode = _currencies.ToDictionary(c => c.Code.ToLowerInvariant());
+        _currenciesBySymbol = _currencies.ToDictionary(c => c.Symbol.ToLowerInvariant());
     }
 
     public bool TryGetByCode(string code, [NotNullWhen(true)] out Currency? currency)
     {
+        code = code.ToLowerInvariant();
         return _currenciesByCode.TryGetValue(code, out currency);
     }
 
-    public bool TryGetBySymbol(string code, [NotNullWhen(true)] out Currency? currency)
+    public bool TryGetBySymbol(string symbol, [NotNullWhen(true)] out Currency? currency)
     {
-        return _currenciesBySymbol.TryGetValue(code, out currency);
+        symbol = symbol.ToLowerInvariant();
+        return _currenciesBySymbol.TryGetValue(symbol, out currency);
     }
     
     public IEnumerator<Currency> GetEnumerator()

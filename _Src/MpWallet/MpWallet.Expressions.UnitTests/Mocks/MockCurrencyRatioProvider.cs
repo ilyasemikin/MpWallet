@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using MpWallet.Collections.Immutable;
 using MpWallet.Collections.Immutable.Extensions;
 using MpWallet.Currencies;
 using MpWallet.Currencies.Services.Abstractions;

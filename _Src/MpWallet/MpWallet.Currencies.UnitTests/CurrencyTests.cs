@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Reflection;
+using MpWallet.Currencies.Extensions;
 
 namespace MpWallet.Currencies.UnitTests;
 
@@ -55,12 +55,86 @@ public sealed class CurrencyTests
         }
     }
 
+    public static IEnumerable<object[]> TryGetByCodeUsdDifferentCases
+    {
+        get
+        {
+            yield return ["USD"];
+            yield return ["Usd"];
+            yield return ["uSd"];
+            yield return ["usD"];
+            yield return ["usd"];
+        }
+    }
+    
+    [Theory]
+    [MemberData(nameof(TryGetByCodeUsdDifferentCases))]
+    public void TryGetByCode_ShouldIgnoreCase_WhenPassDifferentCase(string input)
+    {
+        var result = Currency.All.TryGetByCode(input, out var actual);
+        
+        Assert.True(result);
+        Assert.Equal(Currency.USD, actual);
+    }
+
+    public static IEnumerable<object[]> TryGetBySymbolCadDifferentCases
+    {
+        get
+        {
+            yield return ["CA$"];
+            yield return ["cA$"];
+            yield return ["Ca$"];
+            yield return ["ca$"];
+        }
+    }
+    
+    [Theory]
+    [MemberData(nameof(TryGetBySymbolCadDifferentCases))]
+    public void TryGetBySymbol_ShouldIgnoreCase_WhenPassDifferentCase(string input)
+    {
+        var result = Currency.All.TryGetBySymbol(input, out var actual);
+
+        Assert.True(result);
+        Assert.Equal(Currency.CAD, actual);
+    }
+
+    public static IEnumerable<object[]> TryGetSuccessCases
+    {
+        get
+        {
+            var codes = Currency.All.Select(currency => (Value: currency.Code, Currency: currency));
+            var symbols = Currency.All.Select(currency => (Value: currency.Symbol, Currency: currency));
+
+            var cases = codes.Concat(symbols).Select(p => new object[] { p.Value, p.Currency });
+
+            foreach (var @case in cases)
+                yield return @case;
+            
+            foreach (var @case in TryGetByCodeUsdDifferentCases)
+                yield return [@case[0], Currency.USD];
+
+            foreach (var @case in TryGetBySymbolCadDifferentCases)
+                yield return [@case[0], Currency.CAD];
+        }
+    }
+    
+    [Theory]
+    [MemberData(nameof(TryGetSuccessCases))]
+    public void TryGet_ShouldSuccess_WhenPassAnyStringOfCurrency(string input, Currency expected)
+    {
+        var result = Currency.All.TryGet(input, out var actual);
+        
+        Assert.True(result);
+        Assert.NotNull(actual);
+        Assert.Equal(expected, actual);
+    }
+
     [Fact]
     public void CurrencyAll_ShouldEnumerableContainsAll()
     {
         var currenciesProperties = GetCurrencies();
         var currenciesAll = Currency.All;
 
-        Assert.NotStrictEqual(currenciesProperties, (IEnumerable<Currency>)currenciesAll);
+        Assert.Equal(currenciesProperties, (IEnumerable<Currency>)currenciesAll);
     }
 }

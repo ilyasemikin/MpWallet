@@ -1,14 +1,8 @@
-﻿using MpWallet.Values.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using MpWallet.Values.Abstractions;
 
-namespace MpWallet.Values;
+namespace MpWallet.Values.Implementations;
 
 public sealed record Number(decimal Value) : Value
 {
