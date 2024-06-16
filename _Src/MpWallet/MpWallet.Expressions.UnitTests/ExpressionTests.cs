@@ -11,7 +11,7 @@ public class ExpressionTests
     public static void UnaryNegation_ShouldReturnExpressionOfNegation()
     {
         var number = new Number(1);
-        Expression expression = new ConstantExpression(number);
+        Expression expression = new NumberExpression(number);
 
         var result = -expression;
 
@@ -62,8 +62,8 @@ public class ExpressionTests
         Func<Expression, Expression, Expression, bool> predicate)
     {
         var value = new Number(1);
-        Expression left = new ConstantExpression(value);
-        Expression right = new ConstantExpression(value);
+        Expression left = new NumberExpression(value);
+        Expression right = new NumberExpression(value);
 
         var result = @operator(left, right);
 

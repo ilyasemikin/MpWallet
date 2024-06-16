@@ -1,6 +1,7 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Expressions.Abstractions;
 using MpWallet.Expressions.Context;
+using MpWallet.Expressions.Extensions;
 using MpWallet.Values.Abstractions;
 
 namespace MpWallet.Expressions;
@@ -14,7 +15,7 @@ public sealed record SubtractionOperationExpression(Expression Minuend, Expressi
 
         if (minuend is ConstantExpression minuendConstant && subtrahend is ConstantExpression subtrahendConstant &&
             Value.TrySubtract(minuendConstant.Value, subtrahendConstant.Value, out var value))
-            return new ConstantExpression(value);
+            return value.ToExpression();
 
         return new SubtractionOperationExpression(minuend, subtrahend);
     }

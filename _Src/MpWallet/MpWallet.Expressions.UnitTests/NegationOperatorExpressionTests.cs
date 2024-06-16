@@ -13,7 +13,7 @@ public class NegationOperatorExpressionTests
     public void Calculate_ShouldReturnNegotiate_WhenValueIsNumber()
     {
         var number = new Number(1);
-        var constant = new ConstantExpression(number);
+        var constant = new NumberExpression(number);
         var expression = new NegationOperatorExpression(constant);
 
         var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, Currency.USD);
@@ -29,7 +29,7 @@ public class NegationOperatorExpressionTests
     public void Calculate_ShouldReturnNegotiateValue_WhenValueIsMoney(Currency currency)
     {
         var money = new Money(1, currency);
-        var constant = new ConstantExpression(money);
+        var constant = new MoneyExpression(money);
         var expression = new NegationOperatorExpression(constant);
 
         var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, currency);
@@ -46,8 +46,8 @@ public class NegationOperatorExpressionTests
             var number = new Number(1);
             var money = new Money(1, Currency.USD);
 
-            var numberConstant = new ConstantExpression(number);
-            var moneyConstant = new ConstantExpression(money);
+            var numberConstant = new NumberExpression(number);
+            var moneyConstant = new MoneyExpression(money);
 
             yield return [new AdditionOperatorExpression(numberConstant, moneyConstant)];
             yield return [new SubtractionOperationExpression(numberConstant, moneyConstant)];

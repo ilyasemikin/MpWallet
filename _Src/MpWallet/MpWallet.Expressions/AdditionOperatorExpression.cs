@@ -1,6 +1,7 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Expressions.Abstractions;
 using MpWallet.Expressions.Context;
+using MpWallet.Expressions.Extensions;
 using MpWallet.Values.Abstractions;
 
 namespace MpWallet.Expressions;
@@ -14,7 +15,7 @@ public sealed record AdditionOperatorExpression(Expression Augend, Expression Ad
 
         if (augend is ConstantExpression augendConstant && addend is ConstantExpression addendConstant && 
             Value.TryAdd(augendConstant.Value, addendConstant.Value, out var value))
-            return new ConstantExpression(value);
+            return value.ToExpression();
 
         return augend + addend;
     }

@@ -20,8 +20,8 @@ public class VariableExpressionTests
             var number = new Number(1);
             var money = new Money(1, Currency.USD);
 
-            var numberConstant = new ConstantExpression(number);
-            var moneyConstant = new ConstantExpression(money);
+            var numberConstant = new NumberExpression(number);
+            var moneyConstant = new MoneyExpression(money);
 
             yield return [new Variable(name, numberConstant)];
             yield return [new Variable(name, moneyConstant)];
@@ -52,19 +52,19 @@ public class VariableExpressionTests
             foreach (var (ratio, value) in MockCurrencyRatioProvider.Ratios)
             {
                 var money = new Money(1, ratio.Antecedent);
-                var constant = new ConstantExpression(money);
+                var constant = new MoneyExpression(money);
 
                 var variable = new Variable(name, constant);
 
                 var expectedMoney = new Money(MockCurrencyRatioProvider.Ratios[ratio], ratio.Consequent);
-                var expected = new ConstantExpression(expectedMoney);
+                var expected = new MoneyExpression(expectedMoney);
                 
                 yield return [variable, ratio.Consequent, expected];
             }
 
             {
                 var number = new Number(1);
-                var expression = new ConstantExpression(number);
+                var expression = new NumberExpression(number);
 
                 var variable = new Variable(name, expression);
                 
@@ -73,13 +73,13 @@ public class VariableExpressionTests
 
             {
                 var number = new Number(1);
-                var constant = new ConstantExpression(number);
+                var constant = new NumberExpression(number);
 
                 var expression = new AdditionOperatorExpression(constant, constant);
                 var variable = new Variable(name, expression);
                 
                 var expectedNumber = new Number(2);
-                var expected = new ConstantExpression(expectedNumber);
+                var expected = new NumberExpression(expectedNumber);
 
                 yield return [variable, Currency.USD, expected];
             }
