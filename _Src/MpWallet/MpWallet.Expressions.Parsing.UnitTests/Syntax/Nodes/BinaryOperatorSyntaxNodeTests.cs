@@ -1,4 +1,5 @@
-﻿using MpWallet.Expressions.Parsing.Syntax;
+﻿using MpWallet.Expressions.Operators;
+using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 
@@ -19,17 +20,17 @@ public class BinaryOperatorSyntaxNodeTests
         RightNode = new NumberSyntaxNode(new Token(Input, 4, Input.Length));
     }
 
-    [Fact]
-    public void Constructor_ShouldSuccess_WhenArgumentsCorrect()
-    {
-        BinaryOperatorSyntaxNode? node = null;
-        
-        var exception = Record.Exception(() => node = new BinaryOperatorSyntaxNode(Token, LeftNode, RightNode));
+    public static IEnumerable<object[]> ConstructorSuccessCases =>
+        Operator.All.Select(@operator => new object[] { @operator });
 
-        Assert.Null(exception);
-        Assert.NotNull(node);
+    [Theory]
+    [MemberData(nameof(ConstructorSuccessCases))]
+    public void Constructor_ShouldSuccess_WhenArgumentsCorrect(Operator @operator)
+    {
+        var node = new BinaryOperatorSyntaxNode(Token, @operator, LeftNode, RightNode);
         
         Assert.Equal(Token, node.Token);
+        Assert.Equal(@operator, node.Operator);
         Assert.Equal(LeftNode, node.LeftOperand);
         Assert.Equal(RightNode, node.RightOperand);
     }
@@ -38,18 +39,21 @@ public class BinaryOperatorSyntaxNodeTests
     {
         get
         {
-            yield return [null, LeftNode, RightNode, "token"];
-            yield return [Token, null, RightNode, "left"];
-            yield return [Token, LeftNode, null, "right"];
+            var @operator = Operator.All.First();
+            
+            yield return [null, @operator, LeftNode, RightNode, "token"];
+            yield return [Token, null, LeftNode, RightNode, "@operator"];
+            yield return [Token, @operator, null, RightNode, "left"];
+            yield return [Token, @operator, LeftNode, null, "right"];
         }
     }
     
     [Theory]
     [MemberData(nameof(ConstructorArgumentNullCases))]
     public void Constructor_ShouldThrowArgumentNull_WhenOneParameterNull(
-        Token? token, SyntaxNode? left, SyntaxNode? right, string expectedName)
+        Token? token, Operator? @operator, SyntaxNode? left, SyntaxNode? right, string expectedName)
     {
-        var exception = Record.Exception(() => new BinaryOperatorSyntaxNode(token!, left!, right!));
+        var exception = Record.Exception(() => new BinaryOperatorSyntaxNode(token!, @operator!, left!, right!));
 
         Assert.NotNull(exception);
         Assert.IsType<ArgumentNullException>(exception);
