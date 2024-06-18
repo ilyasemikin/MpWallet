@@ -5,19 +5,29 @@ using MpWallet.Values.Implementations;
 
 namespace MpWallet.Expressions;
 
-public sealed record MoneyExpression(Money Money) : ConstantExpression
+public sealed record MoneyExpression : ConstantExpression
 {
-    public override Money Value { get; } = Money;
+    public override Money Value { get; }
 
+    public MoneyExpression(Money value)
+    {
+        Value = value;
+    }
+
+    public MoneyExpression(decimal value, Currency currency)
+    {
+        Value = new Money(value, currency);
+    }
+    
     public override Expression Negotiate()
     {
-        var value = new Money(-Money.Value, Money.Currency);
+        var value = new Money(-Value.Value, Value.Currency);
         return new MoneyExpression(value);
     }
 
     public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
     {
-        return Money.TryConvertCurrency(context.CurrencyRatioProvider, currency, out var value)
+        return Value.TryConvertCurrency(context.CurrencyRatioProvider, currency, out var value)
             ? new MoneyExpression(value)
             : this;
     }

@@ -103,4 +103,16 @@ public sealed class NumberTests
         
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void Min_ShouldValid()
+    {
+        Assert.Equal(decimal.MinValue, Number.Min);
+    }
+
+    [Fact]
+    public void Max_ShouldValid()
+    {
+        Assert.Equal(decimal.MaxValue, Number.Max);
+    }
 }

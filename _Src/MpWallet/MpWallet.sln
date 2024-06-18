@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.UnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Currencies", "MpWallet.Currencies\MpWallet.Currencies.csproj", "{05F1BACC-2229-4B79-A0AF-51044A9BC594}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Sandbox", "MpWallet.Sandbox\MpWallet.Sandbox.csproj", "{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Values", "MpWallet.Values\MpWallet.Values.csproj", "{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Values.UnitTests", "MpWallet.Values.UnitTests\MpWallet.Values.UnitTests.csproj", "{B798BEB1-2504-4502-8CF3-81E9C23CF77B}"
@@ -28,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.Operators", "MpWallet.Expressions.Operators\MpWallet.Expressions.Operators.csproj", "{E6EE4B35-1DB6-43A6-A2A3-6AF7752AC129}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.Operators.UnitTests", "MpWallet.Expressions.Operators.UnitTests\MpWallet.Expressions.Operators.UnitTests.csproj", "{3C6BEF6C-5A8C-4183-86A9-E3F5479839C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.Parsing.Sprache", "MpWallet.Expressions.Parsing.Sprache\MpWallet.Expressions.Parsing.Sprache.csproj", "{03C31255-7C11-4F81-B2D5-B077C947277F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +50,6 @@ Global
 		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAA7B8DB-26B5-4AE7-B80A-D1BDB5203E14}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC9E828C-DDD5-484C-B63D-06D0E04F90F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -90,5 +86,9 @@ Global
 		{3C6BEF6C-5A8C-4183-86A9-E3F5479839C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C6BEF6C-5A8C-4183-86A9-E3F5479839C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C6BEF6C-5A8C-4183-86A9-E3F5479839C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C31255-7C11-4F81-B2D5-B077C947277F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C31255-7C11-4F81-B2D5-B077C947277F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C31255-7C11-4F81-B2D5-B077C947277F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C31255-7C11-4F81-B2D5-B077C947277F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

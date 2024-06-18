@@ -13,6 +13,7 @@ public sealed record Operator
     {
         var operators = new Operator[]
         {
+            new("=", new OperatorDetails(50, OperatorAssociativity.Right, OperatorArity.Binary)),
             new("+", new OperatorDetails(10, OperatorAssociativity.Left, OperatorArity.Binary)),
             new("-", new OperatorDetails(10, OperatorAssociativity.Left, OperatorArity.Binary)),
             new("*", new OperatorDetails(20, OperatorAssociativity.Left, OperatorArity.Binary)),

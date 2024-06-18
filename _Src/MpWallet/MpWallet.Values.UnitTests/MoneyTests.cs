@@ -127,6 +127,7 @@ public sealed class MoneyTests
             yield return ["1.10000000 $", new Money(1.1M, Currency.USD)];
             yield return ["1.10000001 $", new Money(1.10000001M, Currency.USD)];
             yield return ["1   $", new Money(1, Currency.USD)];
+            yield return ["-1 $", new Money(-1, Currency.USD)];
         }
     }
     
@@ -165,6 +166,7 @@ public sealed class MoneyTests
             yield return [string.Empty];
             yield return [".5 $"];
             yield return ["1. $"];
+            yield return ["- 100 $"];
         }
     }
     
@@ -176,5 +178,17 @@ public sealed class MoneyTests
         
         Assert.False(result);
         Assert.Null(actual);
+    }
+
+    [Fact]
+    public void Min_ShouldValid()
+    {
+        Assert.Equal(decimal.MinValue, Money.Min);
+    }
+
+    [Fact]
+    public void Max_ShouldValid()
+    {
+        Assert.Equal(decimal.MaxValue, Money.Max);
     }
 }

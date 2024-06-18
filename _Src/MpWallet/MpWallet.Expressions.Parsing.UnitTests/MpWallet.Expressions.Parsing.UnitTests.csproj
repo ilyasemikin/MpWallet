@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MpWallet.Expressions.Parsing.Sprache\MpWallet.Expressions.Parsing.Sprache.csproj" />
     <ProjectReference Include="..\MpWallet.Expressions.Parsing\MpWallet.Expressions.Parsing.csproj" />
   </ItemGroup>
 

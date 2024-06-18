@@ -6,6 +6,9 @@ namespace MpWallet.Values.Implementations;
 
 public sealed record Number(decimal Value) : Value
 {
+    public static decimal Min => decimal.MinValue;
+    public static decimal Max => decimal.MaxValue;
+    
     public override string ToString()
     {
         return Value.ToString(CultureInfo.InvariantCulture);

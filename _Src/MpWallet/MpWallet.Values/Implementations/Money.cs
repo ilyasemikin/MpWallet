@@ -11,7 +11,10 @@ namespace MpWallet.Values.Implementations;
 
 public sealed record Money(decimal Value, Currency Currency) : Value
 {
-    public static Regex Regex { get; }
+    public static Regex PatternRegex { get; }
+
+    public static decimal Min => decimal.MinValue;
+    public static decimal Max => decimal.MaxValue;
 
     static Money()
     {
@@ -19,7 +22,7 @@ public sealed record Money(decimal Value, Currency Currency) : Value
         var codes = Currency.All.Select(currency => Regex.Escape(currency.Code));
         var currencies = string.Join("|", codes.Concat(symbols));
 
-        Regex = new Regex($@"(?<VALUE>\d+([\.,]\d+)?)\s*(?<CURRENCY>{currencies})", RegexOptions.Compiled);
+        PatternRegex = new Regex($@"(?<VALUE>-?\d+([\.,]\d+)?)\s*(?<CURRENCY>{currencies})", RegexOptions.Compiled);
     }
     
     public bool TryConvertCurrency(ICurrencyRatioProvider ratioProvider, Currency currency, [NotNullWhen(true)] out Money? result)
@@ -55,7 +58,7 @@ public sealed record Money(decimal Value, Currency Currency) : Value
     {
         formatProvider ??= CultureInfo.InvariantCulture;
         
-        var match = Regex.Match(input);
+        var match = PatternRegex.Match(input);
         if (!match.Success || match.Length != input.Length)
         {
             value = null;
