@@ -5,7 +5,6 @@ using MpWallet.Expressions.Context.Functions;
 using MpWallet.Expressions.Exceptions;
 using MpWallet.Expressions.Extensions;
 using MpWallet.Expressions.UnitTests.Mocks;
-using MpWallet.Values;
 using MpWallet.Values.Implementations;
 using Xunit;
 

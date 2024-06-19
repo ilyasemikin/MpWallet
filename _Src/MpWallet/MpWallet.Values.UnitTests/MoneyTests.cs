@@ -3,7 +3,6 @@ using MpWallet.Currencies.Services.Abstractions;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using MpWallet.Values.Implementations;
-using NuGet.Frameworks;
 
 namespace MpWallet.Values.UnitTests;
 

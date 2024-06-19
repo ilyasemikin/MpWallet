@@ -1,6 +1,6 @@
 ﻿using MpWallet.Expressions.Operators;
+using MpWallet.Expressions.Operators.Collections.Extensions;
 using MpWallet.Expressions.Parsing.Parser.Abstractions;
-using MpWallet.Expressions.Parsing.Parser.Exceptions;
 using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions.Base;
@@ -81,6 +81,33 @@ public abstract class BinaryOperatorExpressionParserTests<TExpressionParser> : E
 
                 yield return [input, expected];
             }
+
+            var addition = Operator.All.Get("+", OperatorArity.Binary);
+            var multiplication = Operator.All.Get("*", OperatorArity.Binary);
+            
+            {
+                const string input = "1 + 2 * 3";
+
+                var expected = new BinaryOperatorSyntaxNode(new Token(input, 2, 3), addition,
+                    new NumberSyntaxNode(new Token(input, 0, 1)),
+                    new BinaryOperatorSyntaxNode(new Token(input, 6, 7), multiplication,
+                        new NumberSyntaxNode(new Token(input, 4, 5)),
+                        new NumberSyntaxNode(new Token(input, 8, 9))));
+                
+                yield return [input, expected];
+            }
+
+            {
+                const string input = "(1 + 2) * 3";
+
+                var expected = new BinaryOperatorSyntaxNode(new Token(input, 8, 9), multiplication,
+                    new BinaryOperatorSyntaxNode(new Token(input, 3, 4), addition,
+                        new NumberSyntaxNode(new Token(input, 1, 2)),
+                        new NumberSyntaxNode(new Token(input, 5, 6))),
+                    new NumberSyntaxNode(new Token(input, 10, 11)));
+
+                yield return [input, expected];
+            }
         }
     }
 
@@ -93,23 +120,5 @@ public abstract class BinaryOperatorExpressionParserTests<TExpressionParser> : E
         Assert.NotNull(node);
         Assert.IsType<BinaryOperatorSyntaxNode>(expected);
         Assert.Equal(expected, node);
-    }
-    
-    public static IEnumerable<object[]> ParseFailureCases
-    {
-        get
-        {
-            yield break;
-        }
-    }
-    
-    [Theory]
-    [MemberData(nameof(ParseFailureCases))]
-    public void Parse_ShouldThrowException_WhenInputInvalid(string input)
-    {
-        var exception = Record.Exception(() => Parser.Parse(input));
-
-        Assert.NotNull(exception);
-        Assert.IsAssignableFrom<ExpressionParseException>(exception);
     }
 }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MpWallet.Expressions.Parsing\MpWallet.Expressions.Parsing.csproj" />
+    <ProjectReference Include="..\MpWallet.Expressions\MpWallet.Expressions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

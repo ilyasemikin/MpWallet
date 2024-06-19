@@ -10,7 +10,7 @@ internal abstract record ParserNode : IPositionAware<ParserNode>
     public int? Index { get; init; }
     public int? Length { get; init; }
 
-    protected Token ToToken(string input)
+    public Token ToToken(string input)
     {
         if (Index is null || Length is null)
             throw new InvalidOperationException();

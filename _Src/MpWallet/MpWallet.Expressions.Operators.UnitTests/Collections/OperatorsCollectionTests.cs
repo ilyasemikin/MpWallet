@@ -1,4 +1,5 @@
 ﻿using MpWallet.Expressions.Operators.Collections;
+using MpWallet.Expressions.Operators.Collections.Extensions;
 
 namespace MpWallet.Expressions.Operators.UnitTests.Collections;
 
@@ -79,19 +80,6 @@ public class OperatorsCollectionTests
             yield return ["/", new[] { arguments[4] }];
         }
     }
-
-    [Theory]
-    [MemberData(nameof(TryGetByValueSuccessCases))]
-    public void TryGetByValue_ShouldSuccess_WhenOperatorExists(string value, IReadOnlyList<Operator> expected)
-    {
-        var collection = new OperatorsCollection(CorrectArguments);
-
-        var result = collection.TryGet(value, out var actual);
-        
-        Assert.True(result);
-        Assert.NotNull(actual);
-        Assert.Equal(expected, actual);
-    }
     
     public static IEnumerable<object[]> TryGetByValueAndArityFailureCases
     {
@@ -115,8 +103,21 @@ public class OperatorsCollectionTests
         Assert.Null(actual);
     }
 
+    [Theory]
+    [MemberData(nameof(TryGetByValueSuccessCases))]
+    public void TryGetByValue_ShouldSuccess_WhenOperatorExists(string value, IReadOnlyList<Operator> expected)
+    {
+        var collection = new OperatorsCollection(CorrectArguments);
+
+        var result = collection.TryGet(value, out var actual);
+        
+        Assert.True(result);
+        Assert.NotNull(actual);
+        Assert.Equal(expected, actual);
+    }
+
     [Fact]
-    public void TryGetByValue_ShouldFailure_WhenNotExists()
+    public void TryGetByValue_ShouldFailure_WhenOperatorsNotExists()
     {
         var collection = new OperatorsCollection(CorrectArguments);
 
@@ -124,5 +125,59 @@ public class OperatorsCollectionTests
         
         Assert.False(result);
         Assert.Null(actual);
+    }
+
+    public static IEnumerable<object[]> GetByValueAndAritySuccessCases => TryGetByValueAndAritySuccessCases;
+    
+    [Theory]
+    [MemberData(nameof(GetByValueAndAritySuccessCases))]
+    public void GetByValueAndArity_ShouldSuccess_WhenOperatorExists(
+        string value, OperatorArity arity, Operator expected)
+    {
+        var collection = new OperatorsCollection(CorrectArguments);
+
+        var actual = collection.Get(value, arity);
+        
+        Assert.Equal(expected, actual);
+    }
+
+    public static IEnumerable<object[]> GetByValueAndArityFailureCases => TryGetByValueAndArityFailureCases;
+
+    [Theory]
+    [MemberData(nameof(GetByValueAndArityFailureCases))]
+    public void GetByValueAndArity_ShouldFailure_WhenOperatorNotExists(string value, OperatorArity arity)
+    {
+        var collection = new OperatorsCollection(CorrectArguments);
+        
+        var exception = Record.Exception(() => collection.Get(value, arity));
+
+        Assert.NotNull(exception);
+        Assert.IsType<InvalidOperationException>(exception);
+        Assert.Equal("Operator not found", ((InvalidOperationException)exception).Message);
+    }
+
+    public static IEnumerable<object[]> GetByValueSuccessCases => TryGetByValueSuccessCases;
+    
+    [Theory]
+    [MemberData(nameof(GetByValueSuccessCases))]
+    public void GetByValue_ShouldSuccess_WhenOperatorsExists(string value, IReadOnlyList<Operator> expected)
+    {
+        var collection = new OperatorsCollection(CorrectArguments);
+
+        var actual = collection.Get(value);
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void GetByValue_ShouldFailure_WhenOperatorsNotExists()
+    {
+        var collection = new OperatorsCollection(CorrectArguments);
+
+        var exception = Record.Exception(() => collection.Get("sample"));
+
+        Assert.NotNull(exception);
+        Assert.IsType<InvalidOperationException>(exception);
+        Assert.Equal("Operators not found", ((InvalidOperationException)exception).Message);
     }
 }
