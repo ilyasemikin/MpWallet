@@ -3,6 +3,7 @@ using MpWallet.Expressions.Operators.Collections.Extensions;
 using MpWallet.Expressions.Parsing.Parser.Abstractions;
 using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
+using MpWallet.Expressions.Parsing.Syntax.Nodes.Services;
 using MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions.Base;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions;
@@ -10,7 +11,7 @@ namespace MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions;
 public abstract class BinaryOperatorExpressionParserTests<TExpressionParser> : ExpressionParserBaseTests<TExpressionParser>
     where TExpressionParser : IExpressionParser
 {
-    public BinaryOperatorExpressionParserTests(Func<TExpressionParser> factory) : base(factory)
+    protected BinaryOperatorExpressionParserTests(Func<TExpressionParser> factory) : base(factory)
     {
     }
 
@@ -119,6 +120,6 @@ public abstract class BinaryOperatorExpressionParserTests<TExpressionParser> : E
 
         Assert.NotNull(node);
         Assert.IsType<BinaryOperatorSyntaxNode>(expected);
-        Assert.Equal(expected, node);
+        Assert.Equal(expected, node, SyntaxNodeAbsoluteEqualityComparer.Instance);
     }
 }

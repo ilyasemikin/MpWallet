@@ -11,7 +11,7 @@ using SpracheLib = Sprache;
 
 namespace MpWallet.Expressions.Parsing.Sprache.Parser.Implementations;
 
-public class ExpressionParser : IExpressionParser
+public sealed class ExpressionParser : IExpressionParser
 {
     private readonly OperatorsCollection _operators;
     
@@ -28,10 +28,22 @@ public class ExpressionParser : IExpressionParser
         select new MoneyParserNode()
     ).Positioned();
 
+    private Parser<char> FunctionArgumentsDelimiterParser =>
+        SpracheLib.Parse
+            .Char(',')
+            .Token();
+
+    private Parser<IEnumerable<ParserNode>> FunctionArgumentsParser =>
+        from left in SpracheLib.Parse.Char('(')
+        from expr in Parser.DelimitedBy(FunctionArgumentsDelimiterParser).Optional()
+        from right in SpracheLib.Parse.Char(')')
+        select expr.GetOrElse([]);
+    
     private Parser<ParserNode> TermParser =>
     (
         from name in SpracheLib.Parse.Regex(Variable.NameRegexPattern)
-        select new TermParsingNode(name)
+        from arguments in FunctionArgumentsParser.Optional()
+        select new TermParsingNode(name, arguments.GetOrDefault())
     ).Positioned();
 
     private Parser<ParserNode> BinaryOperatorParser =>
@@ -46,15 +58,20 @@ public class ExpressionParser : IExpressionParser
         select expr;
 
     private Parser<ParserNode> Parser => BinaryOperatorParser;
+    
+    private Parser<ParserNode> PrecalculatedParser { get; }
 
     public ExpressionParser(OperatorsCollection? operators = null)
     {
         _operators = operators ?? Operator.All;
+
+        PrecalculatedParser = Parser;
     }
 
     public SyntaxNode Parse(string input)
     {
-        return Parser
+        return PrecalculatedParser
+            .End()
             .Parse(input)
             .ToSyntaxNode(input);
     }

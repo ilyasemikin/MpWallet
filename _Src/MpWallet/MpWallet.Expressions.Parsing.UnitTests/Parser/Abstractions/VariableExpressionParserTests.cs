@@ -1,6 +1,7 @@
 ﻿using MpWallet.Expressions.Parsing.Parser.Abstractions;
 using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
+using MpWallet.Expressions.Parsing.Syntax.Nodes.Services;
 using MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions.Base;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions;
@@ -45,6 +46,6 @@ public abstract class VariableExpressionParserTests<TExpressionParser> : Express
 
         Assert.NotNull(actual);
         Assert.IsType<VariableSyntaxNode>(actual);
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual, SyntaxNodeAbsoluteEqualityComparer.Instance);
     }
 }

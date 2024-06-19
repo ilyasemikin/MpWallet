@@ -1,7 +1,7 @@
 ﻿using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Extensions;
 
-namespace MpWallet.Expressions.Parsing.UnitTests.Syntax;
+namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Extensions;
 
 public class TokenExtensionsTests
 {

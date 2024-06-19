@@ -22,12 +22,12 @@ internal sealed record TermParsingNode : ParserNode, IPositionAware<TermParsingN
     {
         var token = ToToken(input);
 
-        if (Arguments is not null)
-        {
-            throw new NotImplementedException();
-        }
+        if (Arguments is null) 
+            return new VariableSyntaxNode(token);
         
-        return new VariableSyntaxNode(token);
+        var arguments = Arguments.Select(argument => argument.ToSyntaxNode(input));
+        return new FunctionSyntaxNode(token, Name, arguments);
+
     }
 
     public override ParserNode SetPos(Position startPos, int length)
