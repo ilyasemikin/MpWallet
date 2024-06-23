@@ -5,7 +5,7 @@ using MpWallet.Values.Implementations;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Nodes;
 
-public class MoneySyntaxNodeTests
+public sealed class MoneySyntaxNodeTests
 {
     [Fact]
     public void Constructor_ShouldSuccess_WhenArgumentCorrect()

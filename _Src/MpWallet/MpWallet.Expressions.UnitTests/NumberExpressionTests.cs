@@ -5,7 +5,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests;
 
-public class NumberExpressionTests
+public sealed class NumberExpressionTests
 {
     [Fact]
     public void Calculate_ShouldReturnSame_WhenValueIsNumber()

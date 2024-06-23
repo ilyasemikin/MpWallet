@@ -5,7 +5,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests;
 
-public class MoneyExpressionTests
+public sealed class MoneyExpressionTests
 {
     public static IEnumerable<object[]> CalculateReturnMoneyWithCurrencyTestCases =>
         MockCurrencyRatioProvider.Ratios.Keys.Select(ratio => new object[] { ratio });

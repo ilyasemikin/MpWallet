@@ -3,7 +3,7 @@ using MpWallet.Expressions.Parsing.Syntax.Nodes;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Nodes;
 
-public class VariableSyntaxNodeTests
+public sealed class VariableSyntaxNodeTests
 {
     private const string Input = "variable";
 

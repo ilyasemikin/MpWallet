@@ -2,7 +2,7 @@ using MpWallet.Collections.Immutable.Abstractions;
 
 namespace MpWallet.Collections.Immutable.UnitTests;
 
-public class ImmutableCollectionTests
+public sealed class ImmutableCollectionTests
 {
     public record Item(string Name, int Value = 0) : IImmutableItem;
     

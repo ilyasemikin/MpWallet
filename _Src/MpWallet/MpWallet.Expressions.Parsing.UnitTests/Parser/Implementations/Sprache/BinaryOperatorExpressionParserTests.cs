@@ -3,7 +3,7 @@ using MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Parser.Implementations.Sprache;
 
-public class BinaryOperatorExpressionParserTests : BinaryOperatorExpressionParserTests<ExpressionParser>
+public sealed class BinaryOperatorExpressionParserTests : BinaryOperatorExpressionParserTests<ExpressionParser>
 {
     public BinaryOperatorExpressionParserTests() 
         : base(() => new ExpressionParser())

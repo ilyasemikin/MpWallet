@@ -3,7 +3,7 @@ using MpWallet.Expressions.Operators.Collections.Extensions;
 
 namespace MpWallet.Expressions.Operators.UnitTests.Collections;
 
-public class OperatorsCollectionTests
+public sealed class OperatorsCollectionTests
 {
     private static IEnumerable<Operator> CorrectArguments => new[]
     {

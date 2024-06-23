@@ -4,7 +4,7 @@ using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Nodes;
 
-public class FunctionSyntaxNodeTests
+public sealed class FunctionSyntaxNodeTests
 {
     private const string Input = "func(a, b, c)";
     private const string ArgumentInput = "a";

@@ -2,7 +2,7 @@ using MpWallet.Expressions.Parsing.Syntax;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax;
 
-public class TokenTests
+public sealed class TokenTests
 {
     public static IEnumerable<object[]> ConstructorSuccessCases
     {

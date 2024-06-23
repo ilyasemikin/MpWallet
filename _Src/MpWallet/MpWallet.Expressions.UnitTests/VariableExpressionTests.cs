@@ -8,7 +8,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests;
 
-public class VariableExpressionTests
+public sealed class VariableExpressionTests
 {
     public static IEnumerable<object[]> CalculateReturnVariableExpressionTestCases
     {

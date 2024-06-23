@@ -3,7 +3,7 @@ using MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Parser.Implementations.Sprache;
 
-public class MoneyExpressionParserTests : MoneyExpressionParserTests<ExpressionParser>
+public sealed class MoneyExpressionParserTests : MoneyExpressionParserTests<ExpressionParser>
 {
     public MoneyExpressionParserTests() 
         : base(() => new ExpressionParser())

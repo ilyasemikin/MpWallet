@@ -7,7 +7,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests.Context;
 
-public class FunctionTests
+public sealed class FunctionTests
 {
     private const string FunctionName = "Name";
 

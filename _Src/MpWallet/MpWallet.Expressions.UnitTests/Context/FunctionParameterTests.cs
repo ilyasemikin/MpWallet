@@ -4,7 +4,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests.Context;
 
-public class FunctionParameterTests
+public sealed class FunctionParameterTests
 {
     public static IEnumerable<object[]> ConstructorSuccessCases
     {

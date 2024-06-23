@@ -1,6 +1,6 @@
 namespace MpWallet.Expressions.Operators.UnitTests;
 
-public class OperatorDetailsTests
+public sealed class OperatorDetailsTests
 {
     [Fact]
     public void Constructor_ShouldSuccess_WhenArgumentsCorrect()

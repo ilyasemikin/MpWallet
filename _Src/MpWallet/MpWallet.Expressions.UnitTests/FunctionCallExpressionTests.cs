@@ -10,7 +10,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests;
 
-public class FunctionCallExpressionTests
+public sealed class FunctionCallExpressionTests
 {
     private const string FunctionWithParametersName = "FunctionWithParameters";
     private const string FunctionWithoutParametersName = "FunctionWithoutParameters";

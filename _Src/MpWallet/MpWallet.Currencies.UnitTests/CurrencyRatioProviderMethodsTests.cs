@@ -4,7 +4,7 @@ using MpWallet.Currencies.Services.Implementations;
 
 namespace MpWallet.Currencies.UnitTests;
 
-public class CurrencyRatioProviderMethodsTests
+public sealed class CurrencyRatioProviderMethodsTests
 {
     private static readonly IReadOnlyDictionary<CurrencyRatio, decimal> Ratios;
 

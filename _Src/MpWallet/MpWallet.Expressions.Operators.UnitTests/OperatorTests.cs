@@ -1,6 +1,6 @@
 ﻿namespace MpWallet.Expressions.Operators.UnitTests;
 
-public class OperatorTests
+public sealed class OperatorTests
 {
     private const string Value = "+";
 

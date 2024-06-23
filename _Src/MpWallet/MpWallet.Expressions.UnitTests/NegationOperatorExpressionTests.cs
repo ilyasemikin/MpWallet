@@ -6,7 +6,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests;
 
-public class NegationOperatorExpressionTests
+public sealed class NegationOperatorExpressionTests
 {
     [Fact]
     public void Calculate_ShouldReturnNegotiate_WhenValueIsNumber()

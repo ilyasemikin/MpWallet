@@ -5,7 +5,7 @@ using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Nodes;
 
-public class BinaryOperatorSyntaxNodeTests
+public sealed class BinaryOperatorSyntaxNodeTests
 {
     private const string Input = "1 + 1";
     

@@ -7,7 +7,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests;
 
-public class BinaryOperationExpressionTests
+public sealed class BinaryOperationExpressionTests
 {
     public static IEnumerable<object[]> CalculateSuccessSimpleArgumentsTestCases
     {

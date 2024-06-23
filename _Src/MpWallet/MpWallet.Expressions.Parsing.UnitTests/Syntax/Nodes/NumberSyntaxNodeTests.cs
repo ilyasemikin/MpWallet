@@ -4,7 +4,7 @@ using MpWallet.Expressions.Parsing.Syntax.Nodes;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Nodes;
 
-public class NumberSyntaxNodeTests
+public sealed class NumberSyntaxNodeTests
 {
     public static IEnumerable<object?[]> SuccessCases
     {

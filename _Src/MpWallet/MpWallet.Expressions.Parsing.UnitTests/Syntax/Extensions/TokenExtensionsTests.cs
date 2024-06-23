@@ -3,7 +3,7 @@ using MpWallet.Expressions.Parsing.Syntax.Extensions;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Extensions;
 
-public class TokenExtensionsTests
+public sealed class TokenExtensionsTests
 {
     public static IEnumerable<object[]> TryTrimSuccessCases
     {

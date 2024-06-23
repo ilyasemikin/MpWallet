@@ -8,7 +8,7 @@ using MpWallet.Expressions.Context.Variables;
 
 namespace MpWallet.Expressions.UnitTests.Mocks;
 
-public class MockCurrencyRatioProvider : ICurrencyRatioProvider
+public sealed class MockCurrencyRatioProvider : ICurrencyRatioProvider
 {
     public static ICurrencyRatioProvider Instance => new MockCurrencyRatioProvider();
 

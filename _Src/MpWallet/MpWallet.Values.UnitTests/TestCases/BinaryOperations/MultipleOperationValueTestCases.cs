@@ -5,7 +5,7 @@ using MpWallet.Values.UnitTests.TestCases.BinaryOperations.Abstractions;
 
 namespace MpWallet.Values.UnitTests.TestCases.BinaryOperations;
 
-public class MultipleOperationValueTestCases : IOperationValueTestCases
+public sealed class MultipleOperationValueTestCases : IOperationValueTestCases
 {
     public static IEnumerable<object[]> GenerateSuccessCases()
     {

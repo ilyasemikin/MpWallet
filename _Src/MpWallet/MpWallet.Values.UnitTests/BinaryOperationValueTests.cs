@@ -6,7 +6,7 @@ using MpWallet.Values.UnitTests.TestCases.BinaryOperations;
 
 namespace MpWallet.Values.UnitTests;
 
-public class BinaryOperationValueTests
+public sealed class BinaryOperationValueTests
 {
     public delegate bool BinaryOperation(Value left, Value right, [NotNullWhen(true)] out Value? result);
     

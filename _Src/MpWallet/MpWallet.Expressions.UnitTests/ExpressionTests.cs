@@ -4,7 +4,7 @@ using Xunit;
 
 namespace MpWallet.Expressions.UnitTests;
 
-public class ExpressionTests
+public sealed class ExpressionTests
 {
     [Fact]
     public static void UnaryNegation_ShouldReturnExpressionOfNegation()
