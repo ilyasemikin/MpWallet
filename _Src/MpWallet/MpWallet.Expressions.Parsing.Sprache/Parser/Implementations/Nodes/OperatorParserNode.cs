@@ -5,12 +5,14 @@ using Sprache;
 
 namespace MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes;
 
-internal record OperatorParserNode : ParserNode, IPositionAware<OperatorParserNode>
+public record OperatorParserNode : ParserNode, IPositionAware<OperatorParserNode>
 {
     public Operator Value { get; }
 
-    public OperatorParserNode(Operator value)
+    internal OperatorParserNode(Operator value)
     {
+        ArgumentNullException.ThrowIfNull(value);
+        
         Value = value;
     }
     

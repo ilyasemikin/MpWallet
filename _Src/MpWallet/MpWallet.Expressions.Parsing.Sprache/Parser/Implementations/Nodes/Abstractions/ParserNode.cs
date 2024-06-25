@@ -5,11 +5,15 @@ using Sprache;
 
 namespace MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes.Abstractions;
 
-internal abstract record ParserNode : IPositionAware<ParserNode>
+public abstract record ParserNode : IPositionAware<ParserNode>
 {
     public int? Index { get; init; }
     public int? Length { get; init; }
-
+    
+    internal ParserNode()
+    {
+    }
+    
     public Token ToToken(string input)
     {
         if (Index is null || Length is null)

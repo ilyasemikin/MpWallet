@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.Operat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.Parsing.Sprache", "MpWallet.Expressions.Parsing.Sprache\MpWallet.Expressions.Parsing.Sprache.csproj", "{03C31255-7C11-4F81-B2D5-B077C947277F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.Parsing.Sprache.UnitTests", "MpWallet.Expressions.Parsing.Sprache.UnitTests\MpWallet.Expressions.Parsing.Sprache.UnitTests.csproj", "{645705F1-0AB1-49DA-B1AD-8B7BF00B8B84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,5 +92,9 @@ Global
 		{03C31255-7C11-4F81-B2D5-B077C947277F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03C31255-7C11-4F81-B2D5-B077C947277F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03C31255-7C11-4F81-B2D5-B077C947277F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645705F1-0AB1-49DA-B1AD-8B7BF00B8B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645705F1-0AB1-49DA-B1AD-8B7BF00B8B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645705F1-0AB1-49DA-B1AD-8B7BF00B8B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645705F1-0AB1-49DA-B1AD-8B7BF00B8B84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

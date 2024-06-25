@@ -14,5 +14,9 @@
   <ItemGroup>
     <PackageReference Include="Sprache" Version="2.3.1" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="MpWallet.Expressions.Parsing.Sprache.UnitTests" />
+  </ItemGroup>
 
 </Project>

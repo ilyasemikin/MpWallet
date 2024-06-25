@@ -5,14 +5,18 @@ using Sprache;
 
 namespace MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes;
 
-internal record BinaryOperatorParserNode : ParserNode, IPositionAware<BinaryOperatorParserNode>
+public record BinaryOperatorParserNode : ParserNode, IPositionAware<BinaryOperatorParserNode>
 {
     public OperatorParserNode Operator { get; }
     public ParserNode Left { get; }
     public ParserNode Right { get; }
     
-    public BinaryOperatorParserNode(OperatorParserNode @operator, ParserNode left, ParserNode right)
+    internal BinaryOperatorParserNode(OperatorParserNode @operator, ParserNode left, ParserNode right)
     {
+        ArgumentNullException.ThrowIfNull(@operator);
+        ArgumentNullException.ThrowIfNull(left);
+        ArgumentNullException.ThrowIfNull(right);
+        
         Operator = @operator;
         Left = left;
         Right = right;

@@ -5,8 +5,12 @@ using Sprache;
 
 namespace MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes;
 
-internal sealed record NumberParserNode : ParserNode, IPositionAware<NumberParserNode>
+public sealed record NumberParserNode : ParserNode, IPositionAware<NumberParserNode>
 {
+    internal NumberParserNode()
+    {
+    }
+    
     public override SyntaxNode ToSyntaxNode(string input)
     {
         var token = ToToken(input);
