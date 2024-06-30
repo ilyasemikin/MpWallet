@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+    </PropertyGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\MpWallet.Collections.Immutable\MpWallet.Collections.Immutable.csproj" />
-	  <ProjectReference Include="..\MpWallet.Currencies\MpWallet.Currencies.csproj" />
-	  <ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\MpWallet.Collections.Immutable\MpWallet.Collections.Immutable.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Currencies\MpWallet.Currencies.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" PrivateAssets="all"/>
+    </ItemGroup>
 
 </Project>

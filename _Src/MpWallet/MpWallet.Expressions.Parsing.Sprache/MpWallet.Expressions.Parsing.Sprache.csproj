@@ -1,22 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MpWallet.Expressions.Parsing\MpWallet.Expressions.Parsing.csproj" />
-    <ProjectReference Include="..\MpWallet.Expressions\MpWallet.Expressions.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\MpWallet.Expressions.Operators\MpWallet.Expressions.Operators.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Expressions.Parsing\MpWallet.Expressions.Parsing.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Expressions\MpWallet.Expressions.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" PrivateAssets="all"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Sprache" Version="2.3.1" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <InternalsVisibleTo Include="MpWallet.Expressions.Parsing.Sprache.UnitTests" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Sprache" Version="2.3.1" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="MpWallet.Expressions.Parsing.Sprache.UnitTests"/>
+    </ItemGroup>
 
 </Project>

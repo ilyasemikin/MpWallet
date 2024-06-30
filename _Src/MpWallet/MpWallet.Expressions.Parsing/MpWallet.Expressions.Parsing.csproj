@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MpWallet.Expressions.Operators\MpWallet.Expressions.Operators.csproj" />
-      <ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" />
+        <ProjectReference Include="..\MpWallet.Expressions.Operators\MpWallet.Expressions.Operators.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" PrivateAssets="all"/>
     </ItemGroup>
 
 </Project>
