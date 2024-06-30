@@ -7,8 +7,4 @@
         <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\MpWallet.Operators\MpWallet.Operators.csproj" PrivateAssets="all"/>
-    </ItemGroup>
-
 </Project>

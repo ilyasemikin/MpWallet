@@ -1,4 +1,4 @@
-﻿namespace MpWallet.Expressions.Operators.Collections.Extensions;
+﻿namespace MpWallet.Operators.Collections.Extensions;
 
 public static class OperatorsCollectionExtensions
 {

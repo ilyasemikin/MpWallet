@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace MpWallet.Expressions.Operators.Collections;
+namespace MpWallet.Operators.Collections;
 
 public sealed class OperatorsCollection : IEnumerable<Operator>
 {

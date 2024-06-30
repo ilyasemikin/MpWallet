@@ -1,5 +1,4 @@
 ﻿using MpWallet.Expressions.Operators;
-using MpWallet.Expressions.Operators.Collections.Extensions;
 using MpWallet.Expressions.Parsing.Parser.Abstractions;
 using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Extensions;
@@ -7,6 +6,8 @@ using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Services;
 using MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions.Base;
+using MpWallet.Operators;
+using MpWallet.Operators.Collections.Extensions;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions;
 
@@ -54,7 +55,7 @@ public abstract class FunctionExpressionParserTests<TExpressionParser> : Express
                 yield return [input, expected];
             }
 
-            var addition = Operator.All.Get("+", OperatorArity.Binary);
+            var addition = DefaultOperators.Collection.Get("+", OperatorArity.Binary);
             
             {
                 const string input = "func(a + b)";

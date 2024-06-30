@@ -1,8 +1,9 @@
 ﻿using MpWallet.Expressions.Operators;
-using MpWallet.Expressions.Operators.Collections.Extensions;
 using MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes;
 using MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes.Abstractions;
 using MpWallet.Expressions.Parsing.Sprache.UnitTests.Parser.Nodes.Abstractions;
+using MpWallet.Operators;
+using MpWallet.Operators.Collections.Extensions;
 using Xunit;
 
 namespace MpWallet.Expressions.Parsing.Sprache.UnitTests.Parser.Nodes;
@@ -14,7 +15,7 @@ public class BinaryOperatorParserNodeTests : ParserNodeTests<BinaryOperatorParse
     {
         get
         {
-            var @operator = new OperatorParserNode(Operator.All.Get("+", OperatorArity.Binary));
+            var @operator = new OperatorParserNode(DefaultOperators.Collection.Get("+", OperatorArity.Binary));
             var left = new MoneyParserNode();
             var right = new MoneyParserNode();
             
@@ -41,7 +42,7 @@ public class BinaryOperatorParserNodeTests : ParserNodeTests<BinaryOperatorParse
 
     protected override BinaryOperatorParserNode CreateEmptyNode()
     {
-        var @operator = Operator.All.Get("+", OperatorArity.Binary);
+        var @operator = DefaultOperators.Collection.Get("+", OperatorArity.Binary);
         var operatorNode = new OperatorParserNode(@operator);
 
         var left = new MoneyParserNode();

@@ -1,15 +1,13 @@
-﻿using MpWallet.Expressions.Operators.Collections;
+﻿using MpWallet.Operators;
+using MpWallet.Operators.Collections;
 
 namespace MpWallet.Expressions.Operators;
 
-public sealed record Operator
+public static class DefaultOperators
 {
-    public static OperatorsCollection All { get; }
-    
-    public string Value { get; }
-    public OperatorDetails Details { get; }
+    public static OperatorsCollection Collection { get; }
 
-    static Operator()
+    static DefaultOperators()
     {
         var operators = new Operator[]
         {
@@ -20,15 +18,6 @@ public sealed record Operator
             new("/", new OperatorDetails(20, OperatorAssociativity.Left, OperatorArity.Binary))
         };
         
-        All = new OperatorsCollection(operators);
-    }
-    
-    public Operator(string value, OperatorDetails details)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(value);
-        ArgumentNullException.ThrowIfNull(details);
-        
-        Value = value;
-        Details = details;
+        Collection = new OperatorsCollection(operators);
     }
 }

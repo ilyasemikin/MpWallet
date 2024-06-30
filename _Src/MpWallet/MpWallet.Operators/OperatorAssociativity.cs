@@ -1,4 +1,4 @@
-﻿namespace MpWallet.Expressions.Operators;
+﻿namespace MpWallet.Operators;
 
 public enum OperatorAssociativity
 {

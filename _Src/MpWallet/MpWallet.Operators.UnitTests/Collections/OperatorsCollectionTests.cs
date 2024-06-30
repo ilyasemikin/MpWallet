@@ -1,7 +1,7 @@
-﻿using MpWallet.Expressions.Operators.Collections;
-using MpWallet.Expressions.Operators.Collections.Extensions;
+﻿using MpWallet.Operators.Collections;
+using MpWallet.Operators.Collections.Extensions;
 
-namespace MpWallet.Expressions.Operators.UnitTests.Collections;
+namespace MpWallet.Operators.UnitTests.Collections;
 
 public sealed class OperatorsCollectionTests
 {

@@ -3,6 +3,7 @@ using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+using MpWallet.Operators;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Nodes;
 
@@ -38,7 +39,7 @@ public sealed class BinaryOperatorSyntaxNodeTests
     {
         get
         {
-            var @operator = Operator.All.First();
+            var @operator = DefaultOperators.Collection.First();
             
             yield return [null, @operator, LeftNode, RightNode, "token"];
             yield return [Token, null, LeftNode, RightNode, "@operator"];

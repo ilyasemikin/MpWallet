@@ -1,10 +1,11 @@
 ﻿using MpWallet.Expressions.Context.Variables;
 using MpWallet.Expressions.Operators;
-using MpWallet.Expressions.Operators.Collections;
 using MpWallet.Expressions.Parsing.Parser.Abstractions;
 using MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes;
 using MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes.Abstractions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+using MpWallet.Operators;
+using MpWallet.Operators.Collections;
 using MpWallet.Values.Implementations;
 using Sprache;
 using SpracheLib = Sprache;
@@ -63,7 +64,7 @@ public sealed class ExpressionParser : IExpressionParser
 
     public ExpressionParser(OperatorsCollection? operators = null)
     {
-        _operators = operators ?? Operator.All;
+        _operators = operators ?? DefaultOperators.Collection;
 
         PrecalculatedParser = Parser;
     }

@@ -1,4 +1,4 @@
-namespace MpWallet.Expressions.Operators.UnitTests;
+namespace MpWallet.Operators.UnitTests;
 
 public sealed class OperatorDetailsTests
 {

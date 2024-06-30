@@ -1,5 +1,5 @@
-﻿using MpWallet.Expressions.Operators;
-using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+﻿using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+using MpWallet.Operators;
 
 namespace MpWallet.Expressions.Parsing.Syntax.Nodes;
 
