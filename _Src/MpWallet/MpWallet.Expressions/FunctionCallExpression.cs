@@ -17,7 +17,7 @@ public sealed record FunctionCallExpression : Expression
         Arguments = arguments?.ToArray() ?? [];
     }
 
-    public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
+    public override Expression Calculate(ExpressionsContext context, Currency currency)
     {
         if (!context.Functions.TryGet(Name, out var function))
             throw new FunctionNotFoundException(Name);

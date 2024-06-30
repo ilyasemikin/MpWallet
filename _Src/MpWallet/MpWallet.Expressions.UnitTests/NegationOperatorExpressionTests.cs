@@ -15,7 +15,7 @@ public sealed class NegationOperatorExpressionTests
         var constant = new NumberExpression(number);
         var expression = new NegationOperatorExpression(constant);
 
-        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, Currency.USD);
+        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, Currency.USD);
         
         Assert.True(result is ConstantExpression { Value: Number n } && n.Value == -number.Value);
     }
@@ -31,7 +31,7 @@ public sealed class NegationOperatorExpressionTests
         var constant = new MoneyExpression(money);
         var expression = new NegationOperatorExpression(constant);
 
-        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, currency);
+        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, currency);
 
         Assert.True(result is ConstantExpression { Value: Money m } &&
                     m.Value == -money.Value &&
@@ -59,7 +59,7 @@ public sealed class NegationOperatorExpressionTests
     {
         var expression = new NegationOperatorExpression(argument);
 
-        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, Currency.USD);
+        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, Currency.USD);
 
         Assert.True(result is NegationOperatorExpression e && e.Argument == argument);
     }
@@ -71,7 +71,7 @@ public sealed class NegationOperatorExpressionTests
         var expression = new NegationOperatorExpression(argument);
         expression = new NegationOperatorExpression(expression);
 
-        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, Currency.USD);
+        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, Currency.USD);
 
         Assert.Equal(argument, result);
     }

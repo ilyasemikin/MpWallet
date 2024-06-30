@@ -19,7 +19,7 @@ public sealed class MoneyExpressionTests
 
         var expectedMoneyValue = MockCurrencyRatioProvider.Ratios[ratio] * money.Value;
         
-        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, ratio.Consequent);
+        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, ratio.Consequent);
 
         Assert.True(result is MoneyExpression { Value: { } m } &&
                     m.Value == expectedMoneyValue &&

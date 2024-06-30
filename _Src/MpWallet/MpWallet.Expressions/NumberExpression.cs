@@ -25,7 +25,7 @@ public record NumberExpression : ConstantExpression
         return new NumberExpression(value);
     }
 
-    public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
+    public override Expression Calculate(ExpressionsContext context, Currency currency)
     {
         return this;
     }

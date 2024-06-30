@@ -6,7 +6,7 @@ namespace MpWallet.Expressions;
 
 public sealed record NegationOperatorExpression(Expression Argument) : Expression
 {
-    public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
+    public override Expression Calculate(ExpressionsContext context, Currency currency)
     {
         return Argument.Calculate(context, currency) switch
         {

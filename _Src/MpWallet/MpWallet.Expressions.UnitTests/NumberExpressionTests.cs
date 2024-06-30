@@ -13,7 +13,7 @@ public sealed class NumberExpressionTests
         var number = new Number(1);
         var expression = new NumberExpression(number);
 
-        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, Currency.BYN);
+        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, Currency.BYN);
         
         Assert.True(result is NumberExpression { Value: { } n } && n.Value == number.Value);
     }

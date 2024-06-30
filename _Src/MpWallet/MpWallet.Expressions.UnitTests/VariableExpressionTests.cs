@@ -105,7 +105,7 @@ public sealed class VariableExpressionTests
         var expression = new VariableExpression(name);
 
         var exception = Record.Exception(
-            () => expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, Currency.EUR));
+            () => expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, Currency.EUR));
 
         Assert.NotNull(exception);
         Assert.True(exception is VariableNotFoundException { VariableName: name });

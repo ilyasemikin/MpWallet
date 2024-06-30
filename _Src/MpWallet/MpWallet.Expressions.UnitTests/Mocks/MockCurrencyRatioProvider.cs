@@ -12,7 +12,7 @@ public sealed class MockCurrencyRatioProvider : ICurrencyRatioProvider
 {
     public static ICurrencyRatioProvider Instance => new MockCurrencyRatioProvider();
 
-    public static ExpressionCalculationContext ExpressionCalculationContext => new(Instance);
+    public static ExpressionsContext ExpressionsContext => new(Instance);
     
     public static IReadOnlyDictionary<CurrencyRatio, decimal> Ratios { get; } = new Dictionary<CurrencyRatio, decimal>
     {
@@ -34,12 +34,12 @@ public sealed class MockCurrencyRatioProvider : ICurrencyRatioProvider
         return true;
     }
 
-    public static ExpressionCalculationContext CreateExpressionCalculationContext(
+    public static ExpressionsContext CreateExpressionCalculationContext(
         IEnumerable<Variable>? variables = null, 
         IEnumerable<Function>? functions = null)
     {
         var variablesImmutableCollection = variables?.ToImmutableCollection();
         var functionsImmutableCollection = functions?.ToImmutableCollection();
-        return new ExpressionCalculationContext(Instance, variablesImmutableCollection, functionsImmutableCollection);
+        return new ExpressionsContext(Instance, variablesImmutableCollection, functionsImmutableCollection);
     }
 }

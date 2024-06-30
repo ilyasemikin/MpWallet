@@ -107,7 +107,7 @@ public sealed class BinaryOperationExpressionTests
     public void Calculate_ShouldReturnConstantExpression_WhenArgumentsSimple(
         Expression expression, Currency currency, ConstantExpression expected)
     {
-        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, currency);
+        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, currency);
         
         Assert.Equal(expected, result);
     }
@@ -187,7 +187,7 @@ public sealed class BinaryOperationExpressionTests
     public void Calculate_ShouldReturnComplexExpression_WhenArgumentsComplex(
         Expression expression, Currency currency, Predicate<Expression> predicate)
     {
-        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, currency);
+        var result = expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, currency);
 
         Assert.True(predicate(result));
     }

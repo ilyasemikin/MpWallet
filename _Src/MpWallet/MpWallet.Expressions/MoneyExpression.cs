@@ -25,7 +25,7 @@ public sealed record MoneyExpression : ConstantExpression
         return new MoneyExpression(value);
     }
 
-    public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
+    public override Expression Calculate(ExpressionsContext context, Currency currency)
     {
         return Value.TryConvertCurrency(context.CurrencyRatioProvider, currency, out var value)
             ? new MoneyExpression(value)

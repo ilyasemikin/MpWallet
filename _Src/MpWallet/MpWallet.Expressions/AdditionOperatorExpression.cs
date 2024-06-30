@@ -8,7 +8,7 @@ namespace MpWallet.Expressions;
 
 public sealed record AdditionOperatorExpression(Expression Augend, Expression Addend) : Expression
 {
-    public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
+    public override Expression Calculate(ExpressionsContext context, Currency currency)
     {
         var augend = Augend.Calculate(context, currency);
         var addend = Addend.Calculate(context, currency);

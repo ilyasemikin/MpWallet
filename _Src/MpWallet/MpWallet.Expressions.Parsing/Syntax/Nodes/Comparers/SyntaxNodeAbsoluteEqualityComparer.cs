@@ -1,6 +1,6 @@
 ﻿using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 
-namespace MpWallet.Expressions.Parsing.Syntax.Nodes.Services;
+namespace MpWallet.Expressions.Parsing.Syntax.Nodes.Comparers;
 
 public class SyntaxNodeAbsoluteEqualityComparer : IEqualityComparer<SyntaxNode>
 {
@@ -8,7 +8,7 @@ public class SyntaxNodeAbsoluteEqualityComparer : IEqualityComparer<SyntaxNode>
     
     public bool Equals(SyntaxNode? x, SyntaxNode? y)
     {
-        if (x == null || y == null)
+        if (x is null || y is null)
             return false;
 
         if (x.GetType() != y.GetType())

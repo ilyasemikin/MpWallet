@@ -8,7 +8,7 @@ namespace MpWallet.Expressions;
 
 public sealed record SubtractionOperationExpression(Expression Minuend, Expression Subtrahend) : Expression
 {
-    public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
+    public override Expression Calculate(ExpressionsContext context, Currency currency)
     {
         var minuend = Minuend.Calculate(context, currency);
         var subtrahend = Subtrahend.Calculate(context, currency);

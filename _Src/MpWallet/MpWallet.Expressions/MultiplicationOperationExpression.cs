@@ -8,7 +8,7 @@ namespace MpWallet.Expressions;
 
 public sealed record MultiplicationOperationExpression(Expression Multiplier, Expression Multiplicand) : Expression
 {
-    public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
+    public override Expression Calculate(ExpressionsContext context, Currency currency)
     {
         var multiplier = Multiplier.Calculate(context, currency);
         var multiplicand = Multiplicand.Calculate(context, currency);

@@ -9,7 +9,7 @@ public abstract record Expression
     {
     }
 
-    public abstract Expression Calculate(ExpressionCalculationContext context, Currency currency);
+    public abstract Expression Calculate(ExpressionsContext context, Currency currency);
 
     public static Expression operator -(Expression argument)
     {

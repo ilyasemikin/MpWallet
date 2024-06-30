@@ -11,14 +11,15 @@ public sealed record Currency
         Symbol = symbol;
     }
 
-    public static Currency USD => new("USD", "$");
-    public static Currency EUR => new("EUR", "€");
-    public static Currency GBP => new("GBP", "£");
-    public static Currency CHF => new("CHF", "₣");
-    public static Currency CAD => new("CAD", "CA$");
-    public static Currency AED => new("AED", "DH");
-    public static Currency BYN => new("BYN", "Br");
-    public static Currency RUB => new("RUB", "₽");
+    public static Currency USD { get; } = new("USD", "$");
+    public static Currency EUR { get; } = new("EUR", "€");
+    public static Currency GBP { get; } = new("GBP", "£");
+    public static Currency CHF { get; } = new("CHF", "₣");
+    public static Currency CAD { get; } = new("CAD", "CA$");
+    public static Currency AED { get; } = new("AED", "DH");
+    public static Currency BYN { get; } = new("BYN", "Br");
+    public static Currency TRY { get; } = new("TRY", "₺");
+    public static Currency RUB { get; } = new("RUB", "₽");
 
     public static CurrenciesCollection All { get; }
 
@@ -37,6 +38,7 @@ public sealed record Currency
             yield return CAD;
             yield return AED;
             yield return BYN;
+            yield return TRY;
             yield return RUB;
         }
     }

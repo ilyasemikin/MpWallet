@@ -7,7 +7,7 @@ namespace MpWallet.Expressions;
 
 public sealed record VariableExpression(string Name) : Expression
 {
-    public override Expression Calculate(ExpressionCalculationContext context, Currency currency)
+    public override Expression Calculate(ExpressionsContext context, Currency currency)
     {
         if (!context.Variables.TryGet(Name, out var variable))
             throw new VariableNotFoundException(Name);

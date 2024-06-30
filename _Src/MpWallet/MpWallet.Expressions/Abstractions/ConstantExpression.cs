@@ -13,5 +13,5 @@ public abstract record ConstantExpression : Expression
     }
     
     public abstract Expression Negotiate();
-    public abstract override Expression Calculate(ExpressionCalculationContext context, Currency currency);
+    public abstract override Expression Calculate(ExpressionsContext context, Currency currency);
 }

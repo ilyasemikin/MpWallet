@@ -25,8 +25,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\MpWallet.Expressions.Operators\MpWallet.Expressions.Operators.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Collections.Immutable\MpWallet.Collections.Immutable.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Currencies\MpWallet.Currencies.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Expressions.Compilation\MpWallet.Expressions.Compilation.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Expressions.Operators\MpWallet.Expressions.Operators.csproj" />
+        <ProjectReference Include="..\MpWallet.Expressions.Parsing\MpWallet.Expressions.Parsing.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Expressions\MpWallet.Expressions.csproj" PrivateAssets="all"/>
         <ProjectReference Include="..\MpWallet.Operators\MpWallet.Operators.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" PrivateAssets="all"/>
     </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@ public sealed class FunctionCallExpressionTests
     private const string FunctionWithParametersName = "FunctionWithParameters";
     private const string FunctionWithoutParametersName = "FunctionWithoutParameters";
     
-    private readonly ExpressionCalculationContext _context;
+    private readonly ExpressionsContext _context;
 
     public FunctionCallExpressionTests()
     {
@@ -56,7 +56,7 @@ public sealed class FunctionCallExpressionTests
         var expression = new FunctionCallExpression(name);
 
         var exception = Record.Exception(() =>
-            expression.Calculate(MockCurrencyRatioProvider.ExpressionCalculationContext, Currency.USD));
+            expression.Calculate(MockCurrencyRatioProvider.ExpressionsContext, Currency.USD));
 
         Assert.NotNull(exception);
         Assert.True(exception is FunctionNotFoundException { FunctionName: name });

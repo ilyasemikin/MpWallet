@@ -4,7 +4,7 @@ using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
-using MpWallet.Expressions.Parsing.Syntax.Nodes.Services;
+using MpWallet.Expressions.Parsing.Syntax.Nodes.Comparers;
 using MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions.Base;
 using MpWallet.Operators;
 using MpWallet.Operators.Collections.Extensions;
