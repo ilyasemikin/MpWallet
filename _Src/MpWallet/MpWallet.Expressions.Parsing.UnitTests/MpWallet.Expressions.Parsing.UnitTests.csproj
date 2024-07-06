@@ -11,7 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
+        <PackageReference Include="coverlet.collector" Version="6.0.2" PrivateAssets="all"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" PrivateAssets="all"/>
         <PackageReference Include="xunit" Version="2.8.1" PrivateAssets="all"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1" PrivateAssets="all">
@@ -30,6 +30,7 @@
         <ProjectReference Include="..\MpWallet.Expressions.Parsing.Sprache\MpWallet.Expressions.Parsing.Sprache.csproj" PrivateAssets="all"/>
         <ProjectReference Include="..\MpWallet.Expressions.Parsing\MpWallet.Expressions.Parsing.csproj" PrivateAssets="all"/>
         <ProjectReference Include="..\MpWallet.Operators\MpWallet.Operators.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Tokens\MpWallet.Tokens.csproj" PrivateAssets="all"/>
         <ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" PrivateAssets="all"/>
     </ItemGroup>
 

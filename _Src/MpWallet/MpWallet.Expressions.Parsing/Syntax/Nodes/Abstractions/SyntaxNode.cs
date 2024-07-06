@@ -1,4 +1,6 @@
-﻿namespace MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+﻿using MpWallet.Tokens;
+
+namespace MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 
 public abstract record SyntaxNode
 {

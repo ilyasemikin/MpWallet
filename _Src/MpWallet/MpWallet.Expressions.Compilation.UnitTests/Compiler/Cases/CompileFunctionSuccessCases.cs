@@ -3,9 +3,9 @@ using MpWallet.Expressions.Implementations;
 using MpWallet.Expressions.Implementations.Constants;
 using MpWallet.Expressions.Implementations.Operators;
 using MpWallet.Expressions.Operators;
-using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+using MpWallet.Tokens.Extensions;
 
 namespace MpWallet.Expressions.Compilation.UnitTests.Compiler.Cases;
 

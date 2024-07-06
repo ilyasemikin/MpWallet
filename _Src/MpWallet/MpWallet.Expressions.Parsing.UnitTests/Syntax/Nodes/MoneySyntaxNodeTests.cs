@@ -1,6 +1,6 @@
 ﻿using MpWallet.Currencies;
-using MpWallet.Expressions.Parsing.Syntax;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
+using MpWallet.Tokens;
 using MpWallet.Values.Implementations;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Nodes;

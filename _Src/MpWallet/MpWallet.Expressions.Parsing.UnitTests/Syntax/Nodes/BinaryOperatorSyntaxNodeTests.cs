@@ -1,9 +1,9 @@
 ﻿using MpWallet.Expressions.Operators;
-using MpWallet.Expressions.Parsing.Syntax;
-using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 using MpWallet.Operators;
+using MpWallet.Tokens;
+using MpWallet.Tokens.Extensions;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Syntax.Nodes;
 

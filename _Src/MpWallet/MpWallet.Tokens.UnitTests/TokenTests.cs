@@ -1,6 +1,4 @@
-using MpWallet.Expressions.Parsing.Syntax;
-
-namespace MpWallet.Expressions.Parsing.UnitTests.Syntax;
+namespace MpWallet.Tokens.UnitTests;
 
 public sealed class TokenTests
 {

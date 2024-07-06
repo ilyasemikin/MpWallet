@@ -1,13 +1,13 @@
 ﻿using MpWallet.Expressions.Operators;
 using MpWallet.Expressions.Parsing.Parser.Abstractions;
-using MpWallet.Expressions.Parsing.Syntax;
-using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Comparers;
 using MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions.Base;
 using MpWallet.Operators;
 using MpWallet.Operators.Collections.Extensions;
+using MpWallet.Tokens;
+using MpWallet.Tokens.Extensions;
 
 namespace MpWallet.Expressions.Parsing.UnitTests.Parser.Abstractions;
 

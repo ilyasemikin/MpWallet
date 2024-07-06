@@ -1,4 +1,4 @@
-﻿namespace MpWallet.Expressions.Parsing.Syntax;
+﻿namespace MpWallet.Tokens;
 
 public sealed record Token
 {

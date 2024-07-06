@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace MpWallet.Expressions.Parsing.Syntax.Extensions;
+namespace MpWallet.Tokens.Extensions;
 
 public static class TokenExtensions
 {

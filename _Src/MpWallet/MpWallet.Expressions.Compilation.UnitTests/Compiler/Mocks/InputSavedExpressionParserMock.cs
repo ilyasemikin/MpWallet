@@ -1,7 +1,7 @@
 ﻿using MpWallet.Expressions.Parsing.Parser.Abstractions;
-using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+using MpWallet.Tokens.Extensions;
 
 namespace MpWallet.Expressions.Compilation.UnitTests.Compiler.Mocks;
 

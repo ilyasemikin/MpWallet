@@ -12,6 +12,7 @@
         <ProjectReference Include="..\MpWallet.Expressions.Parsing\MpWallet.Expressions.Parsing.csproj" PrivateAssets="all"/>
         <ProjectReference Include="..\MpWallet.Expressions\MpWallet.Expressions.csproj" PrivateAssets="all"/>
         <ProjectReference Include="..\MpWallet.Operators\MpWallet.Operators.csproj" PrivateAssets="all"/>
+        <ProjectReference Include="..\MpWallet.Tokens\MpWallet.Tokens.csproj" PrivateAssets="all"/>
         <ProjectReference Include="..\MpWallet.Values\MpWallet.Values.csproj" PrivateAssets="all"/>
     </ItemGroup>
 

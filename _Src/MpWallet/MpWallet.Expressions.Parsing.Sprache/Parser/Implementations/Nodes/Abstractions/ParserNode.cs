@@ -1,6 +1,6 @@
-﻿using MpWallet.Expressions.Parsing.Syntax;
-using MpWallet.Expressions.Parsing.Syntax.Extensions;
-using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+﻿using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+using MpWallet.Tokens;
+using MpWallet.Tokens.Extensions;
 using Sprache;
 
 namespace MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes.Abstractions;

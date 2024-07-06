@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.Compil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Expressions.Compilation.UnitTests", "MpWallet.Expressions.Compilation.UnitTests\MpWallet.Expressions.Compilation.UnitTests.csproj", "{AF3ED94F-D68E-4FA7-AF59-AECF411CCAE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Tokens", "MpWallet.Tokens\MpWallet.Tokens.csproj", "{F24CDF68-6070-4EE4-BDFE-781E526119E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Tokens.UnitTests", "MpWallet.Tokens.UnitTests\MpWallet.Tokens.UnitTests.csproj", "{006056B5-1D3C-4E93-98D5-E5CFFCA31A67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,5 +124,13 @@ Global
 		{AF3ED94F-D68E-4FA7-AF59-AECF411CCAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF3ED94F-D68E-4FA7-AF59-AECF411CCAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF3ED94F-D68E-4FA7-AF59-AECF411CCAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24CDF68-6070-4EE4-BDFE-781E526119E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24CDF68-6070-4EE4-BDFE-781E526119E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24CDF68-6070-4EE4-BDFE-781E526119E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24CDF68-6070-4EE4-BDFE-781E526119E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{006056B5-1D3C-4E93-98D5-E5CFFCA31A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006056B5-1D3C-4E93-98D5-E5CFFCA31A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006056B5-1D3C-4E93-98D5-E5CFFCA31A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006056B5-1D3C-4E93-98D5-E5CFFCA31A67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

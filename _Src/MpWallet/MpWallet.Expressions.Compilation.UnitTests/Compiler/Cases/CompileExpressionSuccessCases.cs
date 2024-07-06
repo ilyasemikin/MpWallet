@@ -2,9 +2,9 @@
 using MpWallet.Expressions.Implementations.Constants;
 using MpWallet.Expressions.Implementations.Operators;
 using MpWallet.Expressions.Operators;
-using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
+using MpWallet.Tokens.Extensions;
 using MpWallet.Values.Implementations;
 using Expression = MpWallet.Expressions.Abstractions.Expression;
 
