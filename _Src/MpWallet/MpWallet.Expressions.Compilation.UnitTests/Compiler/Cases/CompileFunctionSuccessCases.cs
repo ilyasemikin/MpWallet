@@ -1,4 +1,7 @@
-﻿using MpWallet.Expressions.Context.Functions;
+﻿using MpWallet.Expressions.Compiled.Implementations.Functions;
+using MpWallet.Expressions.Implementations;
+using MpWallet.Expressions.Implementations.Constants;
+using MpWallet.Expressions.Implementations.Operators;
 using MpWallet.Expressions.Operators;
 using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
@@ -8,11 +11,11 @@ namespace MpWallet.Expressions.Compilation.UnitTests.Compiler.Cases;
 
 public static class CompileFunctionSuccessCases
 {
-    public static TheoryData<SyntaxNode, FunctionExpression> Cases
+    public static TheoryData<SyntaxNode, Function> Cases
     {
         get
         {
-            var data = new TheoryData<SyntaxNode, FunctionExpression>();
+            var data = new TheoryData<SyntaxNode, Function>();
 
             {
                 const string input = "value() = 1";
@@ -22,7 +25,7 @@ public static class CompileFunctionSuccessCases
                     new NumberSyntaxNode(input.ToToken(10, 11)));
 
                 var expression = new NumberExpression(1);
-                var function = new FunctionExpression("value", expression);
+                var function = new Function("value", expression);
 
                 data.Add(syntaxNode, function);
             }
@@ -52,7 +55,7 @@ public static class CompileFunctionSuccessCases
                     new("a"),
                     new("b")
                 };
-                var function = new FunctionExpression("value", parameters, expression);
+                var function = new Function("value", parameters, expression);
                 
                 data.Add(syntaxNode, function);
             }

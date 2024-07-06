@@ -2,7 +2,7 @@
 using MpWallet.Expressions.Context;
 using MpWallet.Values.Abstractions;
 
-namespace MpWallet.Expressions.Abstractions;
+namespace MpWallet.Expressions.Abstractions.Constants;
 
 public abstract record ConstantExpression : Expression
 {

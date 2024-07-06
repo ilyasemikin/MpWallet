@@ -1,4 +1,4 @@
-﻿using MpWallet.Expressions.Context.Variables;
+﻿using MpWallet.Expressions.Compiled.Implementations.Variables;
 using MpWallet.Expressions.Operators;
 using MpWallet.Expressions.Parsing.Parser.Abstractions;
 using MpWallet.Expressions.Parsing.Sprache.Parser.Implementations.Nodes;

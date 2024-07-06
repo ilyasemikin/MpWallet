@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
-using MpWallet.Expressions.Context.Variables;
+using MpWallet.Expressions.Compiled.Implementations.Variables;
 
-namespace MpWallet.Expressions.Context.Functions;
+namespace MpWallet.Expressions.Compiled.Implementations.Functions;
 
 public sealed record FunctionParameter
 {

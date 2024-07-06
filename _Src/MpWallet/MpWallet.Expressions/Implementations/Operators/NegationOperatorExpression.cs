@@ -1,10 +1,12 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Expressions.Abstractions;
+using MpWallet.Expressions.Abstractions.Constants;
+using MpWallet.Expressions.Abstractions.Operators;
 using MpWallet.Expressions.Context;
 
-namespace MpWallet.Expressions;
+namespace MpWallet.Expressions.Implementations.Operators;
 
-public sealed record NegationOperatorExpression(Expression Argument) : Expression
+public sealed record NegationOperatorExpression(Expression Argument) : OperatorExpression
 {
     public override Expression Calculate(ExpressionsContext context, Currency currency)
     {

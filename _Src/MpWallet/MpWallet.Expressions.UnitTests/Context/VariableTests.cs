@@ -1,5 +1,6 @@
-﻿using MpWallet.Expressions.Context.Functions;
-using MpWallet.Expressions.Context.Variables;
+﻿using MpWallet.Expressions.Compiled.Implementations.Functions;
+using MpWallet.Expressions.Compiled.Implementations.Variables;
+using MpWallet.Expressions.Implementations.Constants;
 using Xunit;
 
 namespace MpWallet.Expressions.UnitTests.Context;
@@ -113,6 +114,6 @@ public sealed class VariableTests
     [Fact]
     public void NameRegexPattern_ShouldEqualFunctionNameRegexPattern()
     {
-        Assert.Equal(FunctionExpression.NameRegexPattern.ToString(), Variable.NameRegexPattern.ToString());
+        Assert.Equal(Function.NameRegexPattern.ToString(), Variable.NameRegexPattern.ToString());
     }
 }

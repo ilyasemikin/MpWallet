@@ -1,7 +1,8 @@
 ﻿using MpWallet.Expressions.Abstractions;
-using MpWallet.Expressions.Context.Functions;
-using MpWallet.Expressions.Context.Variables;
+using MpWallet.Expressions.Compiled.Implementations.Functions;
+using MpWallet.Expressions.Compiled.Implementations.Variables;
 using MpWallet.Expressions.Extensions;
+using MpWallet.Expressions.Implementations.Constants;
 using MpWallet.Values.Implementations;
 using Xunit;
 
@@ -24,7 +25,7 @@ public sealed class FunctionTests
             new("d")
         };
 
-        var function = new FunctionExpression(FunctionName, parameters, _expression);
+        var function = new Function(FunctionName, parameters, _expression);
         
         Assert.Equal(FunctionName, function.Name);
         Assert.Equal(_expression, function.Expression);
@@ -41,7 +42,7 @@ public sealed class FunctionTests
             new("a")
         };
         
-        var exception = Record.Exception(() => new FunctionExpression(FunctionName, parameters, _expression));
+        var exception = Record.Exception(() => new Function(FunctionName, parameters, _expression));
 
         Assert.NotNull(exception);
         Assert.IsType<InvalidOperationException>(exception);
@@ -67,7 +68,7 @@ public sealed class FunctionTests
     public void Constructor_ShouldThrowArgumentNullException_WhenOneOfArgumentsNull(
         string? name, IEnumerable<FunctionParameter>? parameters, Expression? expression, string expectedName)
     {
-        var exception = Record.Exception(() => new FunctionExpression(name!, parameters!, expression!));
+        var exception = Record.Exception(() => new Function(name!, parameters!, expression!));
 
         Assert.NotNull(exception);
         Assert.IsType<ArgumentNullException>(exception);
@@ -95,7 +96,7 @@ public sealed class FunctionTests
     {
         var expression = new NumberExpression(123);
 
-        var exception = Record.Exception(() => new FunctionExpression(name, expression));
+        var exception = Record.Exception(() => new Function(name, expression));
 
         Assert.NotNull(exception);
         Assert.IsType<ArgumentException>(exception);
@@ -126,7 +127,7 @@ public sealed class FunctionTests
     {
         var expression = new NumberExpression(123);
 
-        var exception = Record.Exception(() => new FunctionExpression(name!, expression));
+        var exception = Record.Exception(() => new Function(name!, expression));
 
         Assert.NotNull(exception);
         Assert.IsType<ArgumentException>(exception);
@@ -136,12 +137,12 @@ public sealed class FunctionTests
     [Fact]
     public void NameRegexPattern_ShouldNotNull()
     {
-        Assert.NotNull(FunctionExpression.NameRegexPattern);
+        Assert.NotNull(Function.NameRegexPattern);
     }
 
     [Fact]
     public void NameRegexPattern_ShouldEqualVariableNameRegexPattern()
     {
-        Assert.Equal(FunctionExpression.NameRegexPattern.ToString(), Variable.NameRegexPattern.ToString());
+        Assert.Equal(Function.NameRegexPattern.ToString(), Variable.NameRegexPattern.ToString());
     }
 }

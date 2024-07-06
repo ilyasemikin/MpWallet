@@ -1,9 +1,11 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Expressions.Abstractions;
+using MpWallet.Expressions.Compiled.Implementations.Functions;
 using MpWallet.Expressions.Context;
-using MpWallet.Expressions.Context.Functions;
 using MpWallet.Expressions.Exceptions;
 using MpWallet.Expressions.Extensions;
+using MpWallet.Expressions.Implementations;
+using MpWallet.Expressions.Implementations.Operators;
 using MpWallet.Expressions.UnitTests.Mocks;
 using MpWallet.Values.Implementations;
 using Xunit;
@@ -19,7 +21,7 @@ public sealed class FunctionCallExpressionTests
 
     public FunctionCallExpressionTests()
     {
-        var functions = new List<FunctionExpression>();
+        var functions = new List<Function>();
 
         {
             var functionParameters = new FunctionParameter[]
@@ -35,14 +37,14 @@ public sealed class FunctionCallExpressionTests
                         new VariableExpression("y")),
                     new Number(2).ToExpression());
 
-            var function = new FunctionExpression(FunctionWithParametersName, functionParameters, functionExpression);
+            var function = new Function(FunctionWithParametersName, functionParameters, functionExpression);
             functions.Add(function);
         }
 
         {
             var functionExpression = new Number(1).ToExpression();
 
-            var function = new FunctionExpression(FunctionWithoutParametersName, functionExpression);
+            var function = new Function(FunctionWithoutParametersName, functionExpression);
             functions.Add(function);
         }
 

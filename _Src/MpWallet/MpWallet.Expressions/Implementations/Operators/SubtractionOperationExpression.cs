@@ -1,10 +1,12 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Expressions.Abstractions;
+using MpWallet.Expressions.Abstractions.Constants;
+using MpWallet.Expressions.Abstractions.Operators;
 using MpWallet.Expressions.Context;
 using MpWallet.Expressions.Extensions;
 using MpWallet.Values.Abstractions;
 
-namespace MpWallet.Expressions;
+namespace MpWallet.Expressions.Implementations.Operators;
 
 public sealed record SubtractionOperationExpression(Expression Minuend, Expression Subtrahend) : OperatorExpression
 {

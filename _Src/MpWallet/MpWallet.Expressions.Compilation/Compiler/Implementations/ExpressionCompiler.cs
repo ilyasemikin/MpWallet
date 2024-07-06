@@ -1,10 +1,13 @@
 ﻿using MpWallet.Expressions.Abstractions;
 using MpWallet.Expressions.Compilation.Compiler.Abstractions;
 using MpWallet.Expressions.Compilation.Compiler.Exceptions;
-using MpWallet.Expressions.Compilation.Compiler.Results;
-using MpWallet.Expressions.Compilation.Compiler.Results.Abstractions;
+using MpWallet.Expressions.Compiled.Abstractions;
+using MpWallet.Expressions.Compiled.Implementations.Constants;
+using MpWallet.Expressions.Compiled.Implementations.Functions;
 using MpWallet.Expressions.Context;
-using MpWallet.Expressions.Context.Functions;
+using MpWallet.Expressions.Implementations;
+using MpWallet.Expressions.Implementations.Constants;
+using MpWallet.Expressions.Implementations.Operators;
 using MpWallet.Expressions.Operators;
 using MpWallet.Expressions.Parsing.Parser.Abstractions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
@@ -21,13 +24,13 @@ public sealed class ExpressionCompiler : IExpressionCompiler
         _parser = parser;
     }
     
-    public CompilationResult Compile(string input, ExpressionsContext context)
+    public CompiledExpression Compile(string input, ExpressionsContext context)
     {
         var node = _parser.Parse(input);
         return ConvertSyntaxNodeToCompilationResult(node, context);
     }
 
-    private static CompilationResult ConvertSyntaxNodeToCompilationResult(SyntaxNode node, ExpressionsContext context)
+    private static CompiledExpression ConvertSyntaxNodeToCompilationResult(SyntaxNode node, ExpressionsContext context)
     {
         if (node is BinaryOperatorSyntaxNode @operator && @operator.Operator == DefaultOperators.BinaryAssign)
         {
@@ -35,13 +38,12 @@ public sealed class ExpressionCompiler : IExpressionCompiler
                 throw new Exception();
 
             var expression = ConvertSyntaxNodeToExpression(@operator.RightOperand, context);
-            var result = CreateFunction(function, expression);
-            return new FunctionCompilationResult(result);
+            return CreateFunction(function, expression);
         }
 
         {
             var expression = ConvertSyntaxNodeToExpression(node, context);
-            return new ExpressionCompilationResult(expression);
+            return new Constant(expression);
         }
     }
 
@@ -89,7 +91,7 @@ public sealed class ExpressionCompiler : IExpressionCompiler
         return new FunctionCallExpression(node.Name, arguments);
     }
 
-    private static FunctionExpression CreateFunction(FunctionSyntaxNode node, Expression expression)
+    private static Function CreateFunction(FunctionSyntaxNode node, Expression expression)
     {
         var parameters = new List<FunctionParameter>();
         for (var i = 0; i < node.Arguments.Count; i++)
@@ -103,6 +105,6 @@ public sealed class ExpressionCompiler : IExpressionCompiler
             parameters.Add(parameter);
         }
         
-        return new FunctionExpression(node.Name, parameters, expression);
+        return new Function(node.Name, parameters, expression);
     }
 }

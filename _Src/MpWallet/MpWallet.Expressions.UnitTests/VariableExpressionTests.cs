@@ -1,7 +1,10 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Expressions.Abstractions;
-using MpWallet.Expressions.Context.Variables;
+using MpWallet.Expressions.Compiled.Implementations.Variables;
 using MpWallet.Expressions.Exceptions;
+using MpWallet.Expressions.Implementations;
+using MpWallet.Expressions.Implementations.Constants;
+using MpWallet.Expressions.Implementations.Operators;
 using MpWallet.Expressions.UnitTests.Mocks;
 using MpWallet.Values.Implementations;
 using Xunit;

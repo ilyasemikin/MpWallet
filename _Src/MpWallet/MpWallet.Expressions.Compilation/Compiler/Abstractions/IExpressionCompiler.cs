@@ -1,9 +1,9 @@
-﻿using MpWallet.Expressions.Compilation.Compiler.Results.Abstractions;
+﻿using MpWallet.Expressions.Compiled.Abstractions;
 using MpWallet.Expressions.Context;
 
 namespace MpWallet.Expressions.Compilation.Compiler.Abstractions;
 
 public interface IExpressionCompiler
 {
-    CompilationResult Compile(string input, ExpressionsContext context);
+    CompiledExpression Compile(string input, ExpressionsContext context);
 }

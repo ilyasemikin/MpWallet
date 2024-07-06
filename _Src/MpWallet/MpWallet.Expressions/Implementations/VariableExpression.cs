@@ -3,7 +3,7 @@ using MpWallet.Expressions.Abstractions;
 using MpWallet.Expressions.Context;
 using MpWallet.Expressions.Exceptions;
 
-namespace MpWallet.Expressions;
+namespace MpWallet.Expressions.Implementations;
 
 public sealed record VariableExpression(string Name) : Expression
 {

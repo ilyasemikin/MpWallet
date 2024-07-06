@@ -1,9 +1,10 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Expressions.Abstractions;
+using MpWallet.Expressions.Abstractions.Constants;
 using MpWallet.Expressions.Context;
 using MpWallet.Values.Implementations;
 
-namespace MpWallet.Expressions;
+namespace MpWallet.Expressions.Implementations.Constants;
 
 public record NumberExpression : ConstantExpression
 {

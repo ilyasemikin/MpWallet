@@ -1,14 +1,14 @@
 ﻿using System.Text.RegularExpressions;
 using MpWallet.Expressions.Abstractions;
+using MpWallet.Expressions.Compiled.Abstractions;
 
-namespace MpWallet.Expressions.Context.Variables;
+namespace MpWallet.Expressions.Compiled.Implementations.Variables;
 
-public record Variable
+public sealed record Variable : CompiledExpression
 {
     public static Regex NameRegexPattern { get; }
 
     public string Name { get; }
-    public Expression Expression { get; }
     
     static Variable()
     {
@@ -16,6 +16,7 @@ public record Variable
     }
 
     public Variable(string name, Expression expression)
+        : base(expression)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentNullException.ThrowIfNull(expression);
@@ -25,6 +26,5 @@ public record Variable
             throw new ArgumentException("Does not match the pattern", nameof(name));
 
         Name = name;
-        Expression = expression;
     }
 }

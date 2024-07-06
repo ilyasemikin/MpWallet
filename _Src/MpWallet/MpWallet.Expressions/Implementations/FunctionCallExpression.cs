@@ -1,10 +1,10 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.Expressions.Abstractions;
+using MpWallet.Expressions.Compiled.Implementations.Variables;
 using MpWallet.Expressions.Context;
-using MpWallet.Expressions.Context.Variables;
 using MpWallet.Expressions.Exceptions;
 
-namespace MpWallet.Expressions;
+namespace MpWallet.Expressions.Implementations;
 
 public sealed record FunctionCallExpression : Expression
 {

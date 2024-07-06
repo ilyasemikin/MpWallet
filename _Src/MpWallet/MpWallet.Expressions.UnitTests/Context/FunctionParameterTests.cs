@@ -1,5 +1,5 @@
-﻿using MpWallet.Expressions.Context.Functions;
-using MpWallet.Expressions.Context.Variables;
+﻿using MpWallet.Expressions.Compiled.Implementations.Functions;
+using MpWallet.Expressions.Compiled.Implementations.Variables;
 using Xunit;
 
 namespace MpWallet.Expressions.UnitTests.Context;

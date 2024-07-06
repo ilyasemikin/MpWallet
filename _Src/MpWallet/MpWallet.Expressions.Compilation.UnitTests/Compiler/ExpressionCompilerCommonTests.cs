@@ -1,9 +1,11 @@
 ﻿using MpWallet.Expressions.Abstractions;
 using MpWallet.Expressions.Comparers;
 using MpWallet.Expressions.Compilation.Compiler.Implementations;
-using MpWallet.Expressions.Compilation.Compiler.Results;
 using MpWallet.Expressions.Compilation.UnitTests.Compiler.Cases;
 using MpWallet.Expressions.Compilation.UnitTests.Compiler.Mocks;
+using MpWallet.Expressions.Compiled.Comparers;
+using MpWallet.Expressions.Compiled.Implementations.Constants;
+using MpWallet.Expressions.Compiled.Implementations.Functions;
 using MpWallet.Expressions.Context;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 
@@ -47,8 +49,8 @@ public sealed class ExpressionCompilerCommonTests
         var result = compiler.Compile(input, context);
 
         Assert.NotNull(result);
-        Assert.IsType<ExpressionCompilationResult>(result);
-        Assert.Equal(expression, ((ExpressionCompilationResult)result).Expression, ExpressionEqualityComparer.Instance);
+        Assert.IsType<Constant>(result);
+        Assert.Equal(expression, ((Constant)result).Expression, ExpressionEqualityComparer.Instance);
     }
     
     [Theory]
@@ -64,13 +66,13 @@ public sealed class ExpressionCompilerCommonTests
         var result = compiler.Compile(input, context);
 
         Assert.NotNull(result);
-        Assert.IsType<ExpressionCompilationResult>(result);
-        Assert.Equal(expression, ((ExpressionCompilationResult)result).Expression, ExpressionEqualityComparer.Instance);
+        Assert.IsType<Constant>(result);
+        Assert.Equal(expression, ((Constant)result).Expression, ExpressionEqualityComparer.Instance);
     }
 
     [Theory]
     [MemberData(nameof(CompileFunctionSuccessCases.Cases), MemberType = typeof(CompileFunctionSuccessCases))]
-    public void Compile_ShouldCompileFunction_WhenParsedValid(SyntaxNode parserNode, FunctionExpression function)
+    public void Compile_ShouldCompileFunction_WhenParsedValid(SyntaxNode parserNode, Function function)
     {
         const string input = "123";
 
@@ -81,7 +83,7 @@ public sealed class ExpressionCompilerCommonTests
         var result = compiler.Compile(input, context);
 
         Assert.NotNull(result);
-        Assert.IsType<FunctionCompilationResult>(result);
-        Assert.Equal(function, ((FunctionCompilationResult)result).Function, ExpressionEqualityComparer.Instance);
+        Assert.IsType<Function>(result);
+        Assert.Equal(function, (Function)result, CompiledExpressionEqualityComparer.Instance);
     }
 }

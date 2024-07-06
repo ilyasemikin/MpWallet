@@ -2,9 +2,9 @@
 using MpWallet.Collections.Immutable.Extensions;
 using MpWallet.Currencies;
 using MpWallet.Currencies.Services.Abstractions;
+using MpWallet.Expressions.Compiled.Implementations.Functions;
+using MpWallet.Expressions.Compiled.Implementations.Variables;
 using MpWallet.Expressions.Context;
-using MpWallet.Expressions.Context.Functions;
-using MpWallet.Expressions.Context.Variables;
 
 namespace MpWallet.Expressions.UnitTests.Mocks;
 
@@ -36,7 +36,7 @@ public sealed class MockCurrencyRatioProvider : ICurrencyRatioProvider
 
     public static ExpressionsContext CreateExpressionCalculationContext(
         IEnumerable<Variable>? variables = null, 
-        IEnumerable<FunctionExpression>? functions = null)
+        IEnumerable<Function>? functions = null)
     {
         var variablesImmutableCollection = variables?.ToImmutableCollection(variable => variable.Name);
         var functionsImmutableCollection = functions?.ToImmutableCollection(function => function.Name);
