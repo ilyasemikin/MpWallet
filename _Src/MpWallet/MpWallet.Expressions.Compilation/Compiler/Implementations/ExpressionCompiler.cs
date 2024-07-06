@@ -89,7 +89,7 @@ public sealed class ExpressionCompiler : IExpressionCompiler
         return new FunctionCallExpression(node.Name, arguments);
     }
 
-    private static Function CreateFunction(FunctionSyntaxNode node, Expression expression)
+    private static FunctionExpression CreateFunction(FunctionSyntaxNode node, Expression expression)
     {
         var parameters = new List<FunctionParameter>();
         for (var i = 0; i < node.Arguments.Count; i++)
@@ -103,6 +103,6 @@ public sealed class ExpressionCompiler : IExpressionCompiler
             parameters.Add(parameter);
         }
         
-        return new Function(node.Name, parameters, expression);
+        return new FunctionExpression(node.Name, parameters, expression);
     }
 }

@@ -24,7 +24,7 @@ public sealed class FunctionTests
             new("d")
         };
 
-        var function = new Function(FunctionName, parameters, _expression);
+        var function = new FunctionExpression(FunctionName, parameters, _expression);
         
         Assert.Equal(FunctionName, function.Name);
         Assert.Equal(_expression, function.Expression);
@@ -41,7 +41,7 @@ public sealed class FunctionTests
             new("a")
         };
         
-        var exception = Record.Exception(() => new Function(FunctionName, parameters, _expression));
+        var exception = Record.Exception(() => new FunctionExpression(FunctionName, parameters, _expression));
 
         Assert.NotNull(exception);
         Assert.IsType<InvalidOperationException>(exception);
@@ -67,7 +67,7 @@ public sealed class FunctionTests
     public void Constructor_ShouldThrowArgumentNullException_WhenOneOfArgumentsNull(
         string? name, IEnumerable<FunctionParameter>? parameters, Expression? expression, string expectedName)
     {
-        var exception = Record.Exception(() => new Function(name!, parameters!, expression!));
+        var exception = Record.Exception(() => new FunctionExpression(name!, parameters!, expression!));
 
         Assert.NotNull(exception);
         Assert.IsType<ArgumentNullException>(exception);
@@ -95,7 +95,7 @@ public sealed class FunctionTests
     {
         var expression = new NumberExpression(123);
 
-        var exception = Record.Exception(() => new Function(name, expression));
+        var exception = Record.Exception(() => new FunctionExpression(name, expression));
 
         Assert.NotNull(exception);
         Assert.IsType<ArgumentException>(exception);
@@ -126,7 +126,7 @@ public sealed class FunctionTests
     {
         var expression = new NumberExpression(123);
 
-        var exception = Record.Exception(() => new Function(name!, expression));
+        var exception = Record.Exception(() => new FunctionExpression(name!, expression));
 
         Assert.NotNull(exception);
         Assert.IsType<ArgumentException>(exception);
@@ -136,12 +136,12 @@ public sealed class FunctionTests
     [Fact]
     public void NameRegexPattern_ShouldNotNull()
     {
-        Assert.NotNull(Function.NameRegexPattern);
+        Assert.NotNull(FunctionExpression.NameRegexPattern);
     }
 
     [Fact]
     public void NameRegexPattern_ShouldEqualVariableNameRegexPattern()
     {
-        Assert.Equal(Function.NameRegexPattern.ToString(), Variable.NameRegexPattern.ToString());
+        Assert.Equal(FunctionExpression.NameRegexPattern.ToString(), Variable.NameRegexPattern.ToString());
     }
 }

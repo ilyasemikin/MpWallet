@@ -113,6 +113,6 @@ public sealed class VariableTests
     [Fact]
     public void NameRegexPattern_ShouldEqualFunctionNameRegexPattern()
     {
-        Assert.Equal(Function.NameRegexPattern.ToString(), Variable.NameRegexPattern.ToString());
+        Assert.Equal(FunctionExpression.NameRegexPattern.ToString(), Variable.NameRegexPattern.ToString());
     }
 }

@@ -36,7 +36,7 @@ public sealed class MockCurrencyRatioProvider : ICurrencyRatioProvider
 
     public static ExpressionsContext CreateExpressionCalculationContext(
         IEnumerable<Variable>? variables = null, 
-        IEnumerable<Function>? functions = null)
+        IEnumerable<FunctionExpression>? functions = null)
     {
         var variablesImmutableCollection = variables?.ToImmutableCollection(variable => variable.Name);
         var functionsImmutableCollection = functions?.ToImmutableCollection(function => function.Name);

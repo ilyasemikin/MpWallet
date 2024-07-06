@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using MpWallet.Collections.Immutable;
-using MpWallet.Expressions.Context;
-using MpWallet.Expressions.Context.Functions;
+﻿using MpWallet.Expressions.Context;
 using MpWallet.Expressions.Operators;
 using MpWallet.Expressions.Parsing.Syntax.Extensions;
 using MpWallet.Expressions.Parsing.Syntax.Nodes;
@@ -21,7 +18,7 @@ public class CompileExpressionWithContextSuccessCases
             {
                 const string input = "value()";
 
-                var function = new Function("value", new NumberExpression(0));
+                var function = new FunctionExpression("value", new NumberExpression(0));
                 var context = ExpressionsContext.CreateEmpty()
                     .WithFunctions(function);
                 
@@ -34,7 +31,7 @@ public class CompileExpressionWithContextSuccessCases
             {
                 const string input = "1 + value()";
                 
-                var function = new Function("value", new NumberExpression(0));
+                var function = new FunctionExpression("value", new NumberExpression(0));
                 var context = ExpressionsContext.CreateEmpty()
                     .WithFunctions(function);
 

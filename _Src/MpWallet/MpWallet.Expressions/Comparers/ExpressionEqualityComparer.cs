@@ -20,6 +20,7 @@ public sealed class ExpressionEqualityComparer : IEqualityComparer<Expression>
             MoneyExpression node => Equals(node, (MoneyExpression)y),
             VariableExpression node => Equals(node, (VariableExpression)y),
             FunctionCallExpression node => Equals(node, (FunctionCallExpression)y),
+            FunctionExpression node => Equals(node, (FunctionExpression)y),
             AdditionOperatorExpression node => Equals(node, (AdditionOperatorExpression)y),
             SubtractionOperationExpression node => Equals(node, (SubtractionOperationExpression)y),
             MultiplicationOperationExpression node => Equals(node, (MultiplicationOperationExpression)y),
@@ -50,7 +51,7 @@ public sealed class ExpressionEqualityComparer : IEqualityComparer<Expression>
                Equals(x.Multiplier, y.Multiplicand) && Equals(x.Multiplicand, y.Multiplier);
     }
 
-    public bool Equals(DivisionOperatorExpression x, DivisionOperatorExpression y)
+    private bool Equals(DivisionOperatorExpression x, DivisionOperatorExpression y)
     {
         return Equals(x.Numerator, y.Numerator) && Equals(x.Denominator, y.Denominator);
     }
@@ -60,6 +61,14 @@ public sealed class ExpressionEqualityComparer : IEqualityComparer<Expression>
         return x.Name == y.Name &&
                x.Arguments.Count == y.Arguments.Count &&
                x.Arguments.Zip(y.Arguments).All(p => Equals(p.First, p.Second));
+    }
+
+    private bool Equals(FunctionExpression x, FunctionExpression y)
+    {
+        return x.Name == y.Name &&
+               x.Parameters.Count == y.Parameters.Count &&
+               x.Parameters.Zip(y.Parameters).All(p => p.First == p.Second) &&
+               Equals(x.Expression, y.Expression);
     }
     
     private static bool Equals(VariableExpression x, VariableExpression y)

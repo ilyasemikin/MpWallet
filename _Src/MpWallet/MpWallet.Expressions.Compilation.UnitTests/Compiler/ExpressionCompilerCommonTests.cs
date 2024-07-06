@@ -5,8 +5,6 @@ using MpWallet.Expressions.Compilation.Compiler.Results;
 using MpWallet.Expressions.Compilation.UnitTests.Compiler.Cases;
 using MpWallet.Expressions.Compilation.UnitTests.Compiler.Mocks;
 using MpWallet.Expressions.Context;
-using MpWallet.Expressions.Context.Functions;
-using MpWallet.Expressions.Context.Functions.Comparers;
 using MpWallet.Expressions.Parsing.Syntax.Nodes.Abstractions;
 
 namespace MpWallet.Expressions.Compilation.UnitTests.Compiler;
@@ -72,7 +70,7 @@ public sealed class ExpressionCompilerCommonTests
 
     [Theory]
     [MemberData(nameof(CompileFunctionSuccessCases.Cases), MemberType = typeof(CompileFunctionSuccessCases))]
-    public void Compile_ShouldCompileFunction_WhenParsedValid(SyntaxNode parserNode, Function function)
+    public void Compile_ShouldCompileFunction_WhenParsedValid(SyntaxNode parserNode, FunctionExpression function)
     {
         const string input = "123";
 
@@ -84,6 +82,6 @@ public sealed class ExpressionCompilerCommonTests
 
         Assert.NotNull(result);
         Assert.IsType<FunctionCompilationResult>(result);
-        Assert.Equal(function, ((FunctionCompilationResult)result).Function, FunctionEqualityComparer.Instance);
+        Assert.Equal(function, ((FunctionCompilationResult)result).Function, ExpressionEqualityComparer.Instance);
     }
 }

@@ -8,11 +8,11 @@ namespace MpWallet.Expressions.Compilation.UnitTests.Compiler.Cases;
 
 public static class CompileFunctionSuccessCases
 {
-    public static TheoryData<SyntaxNode, Function> Cases
+    public static TheoryData<SyntaxNode, FunctionExpression> Cases
     {
         get
         {
-            var data = new TheoryData<SyntaxNode, Function>();
+            var data = new TheoryData<SyntaxNode, FunctionExpression>();
 
             {
                 const string input = "value() = 1";
@@ -22,7 +22,7 @@ public static class CompileFunctionSuccessCases
                     new NumberSyntaxNode(input.ToToken(10, 11)));
 
                 var expression = new NumberExpression(1);
-                var function = new Function("value", expression);
+                var function = new FunctionExpression("value", expression);
 
                 data.Add(syntaxNode, function);
             }
@@ -52,7 +52,7 @@ public static class CompileFunctionSuccessCases
                     new("a"),
                     new("b")
                 };
-                var function = new Function("value", parameters, expression);
+                var function = new FunctionExpression("value", parameters, expression);
                 
                 data.Add(syntaxNode, function);
             }
