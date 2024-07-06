@@ -39,7 +39,7 @@ public sealed class BinaryOperatorSyntaxNodeTests
     {
         get
         {
-            var @operator = DefaultOperators.Collection.First();
+            var @operator = DefaultOperators.BinaryAddition;
             
             yield return [null, @operator, LeftNode, RightNode, "token"];
             yield return [Token, null, LeftNode, RightNode, "@operator"];

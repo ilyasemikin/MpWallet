@@ -1,7 +1,8 @@
 ﻿using MpWallet.Expressions.Abstractions;
 using MpWallet.Expressions.Compilation.Compiler.Abstractions;
-using MpWallet.Expressions.Compilation.Compiler.Models;
-using MpWallet.Expressions.Compilation.Compiler.Models.Abstractions;
+using MpWallet.Expressions.Compilation.Compiler.Exceptions;
+using MpWallet.Expressions.Compilation.Compiler.Results;
+using MpWallet.Expressions.Compilation.Compiler.Results.Abstractions;
 using MpWallet.Expressions.Context;
 using MpWallet.Expressions.Context.Functions;
 using MpWallet.Expressions.Operators;
@@ -72,7 +73,7 @@ public sealed class ExpressionCompiler : IExpressionCompiler
         if (node.Operator == DefaultOperators.BinaryDivision)
             return new DivisionOperatorExpression(left, right);
 
-        throw new Exception();
+        throw new UnknownOperatorCompilerException(node.Operator);
     }
 
     private static FunctionCallExpression ConvertFunctionToExpression(

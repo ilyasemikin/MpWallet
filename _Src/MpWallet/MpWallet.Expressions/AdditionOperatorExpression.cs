@@ -6,7 +6,7 @@ using MpWallet.Values.Abstractions;
 
 namespace MpWallet.Expressions;
 
-public sealed record AdditionOperatorExpression(Expression Augend, Expression Addend) : Expression
+public sealed record AdditionOperatorExpression(Expression Augend, Expression Addend) : OperatorExpression
 {
     public override Expression Calculate(ExpressionsContext context, Currency currency)
     {

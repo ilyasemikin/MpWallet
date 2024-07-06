@@ -1,4 +1,4 @@
-﻿using MpWallet.Expressions.Compilation.Compiler.Models.Abstractions;
+﻿using MpWallet.Expressions.Compilation.Compiler.Results.Abstractions;
 using MpWallet.Expressions.Context;
 
 namespace MpWallet.Expressions.Compilation.Compiler.Abstractions;

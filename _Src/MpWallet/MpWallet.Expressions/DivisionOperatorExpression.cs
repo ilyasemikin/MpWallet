@@ -6,7 +6,7 @@ using MpWallet.Values.Abstractions;
 
 namespace MpWallet.Expressions;
 
-public sealed record DivisionOperatorExpression(Expression Numerator, Expression Denominator) : Expression
+public sealed record DivisionOperatorExpression(Expression Numerator, Expression Denominator) : OperatorExpression
 {
     public override Expression Calculate(ExpressionsContext context, Currency currency)
     {

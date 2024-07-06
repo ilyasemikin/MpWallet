@@ -16,20 +16,20 @@ public sealed class ExpressionParser : IExpressionParser
 {
     private readonly OperatorsCollection _operators;
     
-    private Parser<ParserNode> NumberParser =>
+    private static Parser<ParserNode> NumberParser =>
     (
         from sign in SpracheLib.Parse.Char('-').Token().Optional()
         from value in SpracheLib.Parse.DecimalInvariant.Token()
         select new NumberParserNode()
     ).Positioned();
 
-    private Parser<ParserNode> MoneyParser =>
+    private static Parser<ParserNode> MoneyParser =>
     (
         from money in SpracheLib.Parse.RegexMatch(Money.PatternRegex).Token()
         select new MoneyParserNode()
     ).Positioned();
 
-    private Parser<char> FunctionArgumentsDelimiterParser =>
+    private static Parser<char> FunctionArgumentsDelimiterParser =>
         SpracheLib.Parse
             .Char(',')
             .Token();

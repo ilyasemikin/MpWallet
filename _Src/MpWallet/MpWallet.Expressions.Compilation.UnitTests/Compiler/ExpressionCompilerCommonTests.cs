@@ -1,7 +1,7 @@
 ﻿using MpWallet.Expressions.Abstractions;
 using MpWallet.Expressions.Comparers;
 using MpWallet.Expressions.Compilation.Compiler.Implementations;
-using MpWallet.Expressions.Compilation.Compiler.Models;
+using MpWallet.Expressions.Compilation.Compiler.Results;
 using MpWallet.Expressions.Compilation.UnitTests.Compiler.Cases;
 using MpWallet.Expressions.Compilation.UnitTests.Compiler.Mocks;
 using MpWallet.Expressions.Context;

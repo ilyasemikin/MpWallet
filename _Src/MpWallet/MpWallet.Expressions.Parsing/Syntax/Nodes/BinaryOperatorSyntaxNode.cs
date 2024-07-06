@@ -3,21 +3,16 @@ using MpWallet.Operators;
 
 namespace MpWallet.Expressions.Parsing.Syntax.Nodes;
 
-public sealed record BinaryOperatorSyntaxNode : SyntaxNode
+public sealed record BinaryOperatorSyntaxNode : OperatorSyntaxNode
 {
-    public Operator Operator { get; }
     public SyntaxNode LeftOperand { get; }
     public SyntaxNode RightOperand { get; }
     
     public BinaryOperatorSyntaxNode(Token token, Operator @operator, SyntaxNode left, SyntaxNode right) 
-        : base(token)
+        : base(token, @operator)
     {
-        ArgumentNullException.ThrowIfNull(@operator);
         ArgumentNullException.ThrowIfNull(left);
         ArgumentNullException.ThrowIfNull(right);
-        
-        if (@operator.Value != token.Value)
-            throw new InvalidOperationException("Operator value and token value must equals");
 
         if (@operator.Details.Arity is not OperatorArity.Binary)
             throw new ArgumentException("Operator must be binary", nameof(@operator));
@@ -30,7 +25,6 @@ public sealed record BinaryOperatorSyntaxNode : SyntaxNode
         if (right.Token.Begin <= token.End)
             throw new ArgumentException("Right operator must be on right", nameof(right));
         
-        Operator = @operator;
         LeftOperand = left;
         RightOperand = right;
     }
