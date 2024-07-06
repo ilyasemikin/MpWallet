@@ -1,10 +1,9 @@
 ﻿using System.Text.RegularExpressions;
 using MpWallet.Expressions.Abstractions;
-using MpWallet.Collections.Immutable.Abstractions;
 
 namespace MpWallet.Expressions.Context.Functions;
 
-public sealed record Function : IImmutableItem
+public sealed record Function
 {
     public static Regex NameRegexPattern { get; }
     

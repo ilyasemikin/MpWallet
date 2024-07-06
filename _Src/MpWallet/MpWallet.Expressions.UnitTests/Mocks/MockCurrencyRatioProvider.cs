@@ -38,8 +38,8 @@ public sealed class MockCurrencyRatioProvider : ICurrencyRatioProvider
         IEnumerable<Variable>? variables = null, 
         IEnumerable<Function>? functions = null)
     {
-        var variablesImmutableCollection = variables?.ToImmutableCollection();
-        var functionsImmutableCollection = functions?.ToImmutableCollection();
+        var variablesImmutableCollection = variables?.ToImmutableCollection(variable => variable.Name);
+        var functionsImmutableCollection = functions?.ToImmutableCollection(function => function.Name);
         return new ExpressionsContext(Instance, variablesImmutableCollection, functionsImmutableCollection);
     }
 }

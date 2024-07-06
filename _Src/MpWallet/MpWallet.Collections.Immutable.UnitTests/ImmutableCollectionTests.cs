@@ -1,15 +1,34 @@
-using MpWallet.Collections.Immutable.Abstractions;
-
 namespace MpWallet.Collections.Immutable.UnitTests;
 
 public sealed class ImmutableCollectionTests
 {
-    public record Item(string Name, int Value = 0) : IImmutableItem;
+    public record Item(string Name, int Value = 0);
+
+    private static ImmutableCollection<Item> CreateEmpty() => new(item => item.Name);
+
+    [Fact]
+    public void Constructor_ShouldCreateEmpty_WhenPassValid()
+    {
+        var collection = new ImmutableCollection<Item>(item => item.Name);
+
+        Assert.Equal(0, collection.Count);
+        Assert.Empty(collection);
+    }
+
+    [Fact]
+    public void Constructor_ShouldThrowArgumentNullException_WhenNullPassed()
+    {
+        var exception = Record.Exception(() => new ImmutableCollection<Item>(null!));
+
+        Assert.NotNull(exception);
+        Assert.IsType<ArgumentNullException>(exception);
+        Assert.Equal("selector", ((ArgumentNullException)exception).ParamName);
+    }
     
     [Fact]
     public void TryAdd_ShouldSuccess_WhenAddToEmpty()
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         var item = new Item("Name");
 
         var result = collection.TryAdd(item, out var newCollection);
@@ -24,7 +43,7 @@ public sealed class ImmutableCollectionTests
     [Fact]
     public void TryAdd_ShouldFailure_WhenAddDuplicate()
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         var item = new Item("Name");
         collection.TryAdd(item, out collection!);
 
@@ -37,7 +56,7 @@ public sealed class ImmutableCollectionTests
     [Fact]
     public void TryUpdate_ShouldSuccess_WhenUpdateExisted()
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         var item = new Item("Name");
         collection.TryAdd(item, out collection!);
 
@@ -51,7 +70,7 @@ public sealed class ImmutableCollectionTests
     [Fact]
     public void TryUpdate_ShouldFailure_WhenUpdateNotExisted()
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         var item = new Item("Name");
 
         var result = collection.TryUpdate(item, out var newCollection);
@@ -63,7 +82,7 @@ public sealed class ImmutableCollectionTests
     [Fact]
     public void AddOrUpdate_ShouldAdd_WhenPassNewItem()
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         var item = new Item("Name");
 
         var newCollection = collection.AddOrUpdate(item);
@@ -75,7 +94,7 @@ public sealed class ImmutableCollectionTests
     [Fact]
     public void AddOrUpdate_ShouldUpdate_WhenPassExistedItem()
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         var item = new Item("Name");
         var updatedItem = item with { Value = 2 };
         collection.TryAdd(item, out collection!);
@@ -94,7 +113,7 @@ public sealed class ImmutableCollectionTests
     [Fact]
     public void TryGet_ShouldSuccess_WhenRequestsExistedItem()
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         var item = new Item("Name");
         collection.TryAdd(item, out collection!);
 
@@ -107,7 +126,7 @@ public sealed class ImmutableCollectionTests
     [Fact]
     public void TryGet_ShouldFailure_WhenRequestsNotExistedItem()
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         var item = new Item("Name");
 
         var result = collection.TryGet(item.Name, out var getItem);
@@ -116,7 +135,7 @@ public sealed class ImmutableCollectionTests
         Assert.Null(getItem);
     }
 
-    public static IEnumerable<object[]> WithTestCases
+    public static IEnumerable<object[]> WithCases
     {
         get
         {
@@ -198,10 +217,10 @@ public sealed class ImmutableCollectionTests
     }
 
     [Theory]
-    [MemberData(nameof(WithTestCases))]
+    [MemberData(nameof(WithCases))]
     public void With_ShouldSuccess(IEnumerable<Item> baseItems, IEnumerable<Item> withItems, IReadOnlyList<Item> expected)
     {
-        var collection = ImmutableCollection<Item>.Empty;
+        var collection = CreateEmpty();
         foreach (var item in baseItems)
             collection.TryAdd(item, out collection!);
 

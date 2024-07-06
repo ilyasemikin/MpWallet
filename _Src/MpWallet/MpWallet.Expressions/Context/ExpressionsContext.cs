@@ -18,8 +18,8 @@ public sealed class ExpressionsContext
         ImmutableCollection<Function>? functions = null)
     {
         CurrencyRatioProvider = currencyRatioProvider;
-        Variables = variables ?? ImmutableCollection<Variable>.Empty;
-        Functions = functions ?? ImmutableCollection<Function>.Empty;
+        Variables = variables ?? new ImmutableCollection<Variable>(variable => variable.Name);
+        Functions = functions ?? new ImmutableCollection<Function>(function => function.Name);
     }
 
     public ExpressionsContext WithVariables(params Variable[] variables)
