@@ -1,8 +1,8 @@
 ﻿using MpWallet.Expressions.Abstractions;
 using MpWallet.Expressions.Compilation.Compiler.Abstractions;
 using MpWallet.Expressions.Compilation.Compiler.Exceptions;
+using MpWallet.Expressions.Compilation.Compiler.Implementations.Extensions;
 using MpWallet.Expressions.Compiled.Abstractions;
-using MpWallet.Expressions.Compiled.Implementations.Constants;
 using MpWallet.Expressions.Compiled.Implementations.Functions;
 using MpWallet.Expressions.Context;
 using MpWallet.Expressions.Implementations;
@@ -27,59 +27,31 @@ public sealed class ExpressionCompiler : IExpressionCompiler
     public CompiledExpression Compile(string input, ExpressionsContext context)
     {
         var node = _parser.Parse(input);
-        return ConvertSyntaxNodeToCompilationResult(node, context);
+        return ConvertSyntaxNodeToExpression(node, context).CompiledExpression;
     }
 
-    private static CompiledExpression ConvertSyntaxNodeToCompilationResult(SyntaxNode node, ExpressionsContext context)
+    private static CompiledNode ConvertSyntaxNodeToExpression(SyntaxNode node, ExpressionsContext context)
     {
-        if (node is BinaryOperatorSyntaxNode @operator && @operator.Operator == DefaultOperators.BinaryAssign)
+        return node switch
         {
-            if (@operator.LeftOperand is not FunctionSyntaxNode function)
-                throw new Exception();
-
-            var expression = ConvertSyntaxNodeToExpression(@operator.RightOperand, context);
-            return CreateFunction(function, expression);
-        }
-
-        {
-            var expression = ConvertSyntaxNodeToExpression(node, context);
-            return new Constant(expression);
-        }
+            BinaryOperatorSyntaxNode @operator => ConvertBinaryOperatorToExpression(@operator, context),
+            _ => ConvertSyntaxNode(node, context).ToCompiledNode()
+        };
     }
 
-    private static Expression ConvertSyntaxNodeToExpression(SyntaxNode node, ExpressionsContext context)
+    private static Expression ConvertSyntaxNode(SyntaxNode node, ExpressionsContext context)
     {
         return node switch
         {
             NumberSyntaxNode number => new NumberExpression(number.Value),
             MoneySyntaxNode money => new MoneyExpression(money.Value),
             VariableSyntaxNode variable => new VariableExpression(variable.Name),
-            BinaryOperatorSyntaxNode @operator => ConvertBinaryOperatorToExpression(@operator, context),
-            FunctionSyntaxNode function => ConvertFunctionToExpression(function, context),
+            FunctionSyntaxNode function => ConvertFunctionSyntaxNode(function, context),
             _ => throw new Exception()
         };
     }
-
-    private static Expression ConvertBinaryOperatorToExpression(
-        BinaryOperatorSyntaxNode node, ExpressionsContext context)
-    {
-        var left = ConvertSyntaxNodeToExpression(node.LeftOperand, context);
-        var right = ConvertSyntaxNodeToExpression(node.RightOperand, context);
-
-        if (node.Operator == DefaultOperators.BinaryAddition)
-            return new AdditionOperatorExpression(left, right);
-        if (node.Operator == DefaultOperators.BinarySubtraction)
-            return new SubtractionOperationExpression(left, right);
-        if (node.Operator == DefaultOperators.BinaryMultiplication)
-            return new MultiplicationOperationExpression(left, right);
-        if (node.Operator == DefaultOperators.BinaryDivision)
-            return new DivisionOperatorExpression(left, right);
-
-        throw new UnknownOperatorCompilerException(node.Operator);
-    }
-
-    private static FunctionCallExpression ConvertFunctionToExpression(
-        FunctionSyntaxNode node, ExpressionsContext context)
+    
+    private static FunctionCallExpression ConvertFunctionSyntaxNode(FunctionSyntaxNode node, ExpressionsContext context)
     {
         if (!context.Functions.TryGet(node.Name, out var function))
             throw new Exception();
@@ -87,8 +59,36 @@ public sealed class ExpressionCompiler : IExpressionCompiler
         if (node.Arguments.Count != function.Parameters.Count)
             throw new Exception();
 
-        var arguments = node.Arguments.Select(argument => ConvertSyntaxNodeToExpression(argument, context));
+        var arguments = node.Arguments.Select(
+            argument => ConvertSyntaxNodeToExpression(argument, context).Expression);
         return new FunctionCallExpression(node.Name, arguments);
+    }
+    
+    private static CompiledNode ConvertBinaryOperatorToExpression(
+        BinaryOperatorSyntaxNode node, ExpressionsContext context)
+    {
+        if (node.Operator == DefaultOperators.BinaryAssign)
+        {
+            if (node.LeftOperand is not FunctionSyntaxNode function)
+                throw new Exception();
+
+            var compiled = ConvertSyntaxNodeToExpression(node.RightOperand, context);
+            return CreateFunction(function, compiled.Expression).ToCompiledNode();
+        }
+
+        var left = ConvertSyntaxNodeToExpression(node.LeftOperand, context).Expression;
+        var right = ConvertSyntaxNodeToExpression(node.RightOperand, context).Expression;
+
+        if (node.Operator == DefaultOperators.BinaryAddition)
+            return new AdditionOperatorExpression(left, right).ToCompiledNode();
+        if (node.Operator == DefaultOperators.BinarySubtraction)
+            return new SubtractionOperationExpression(left, right).ToCompiledNode();
+        if (node.Operator == DefaultOperators.BinaryMultiplication)
+            return new MultiplicationOperationExpression(left, right).ToCompiledNode();
+        if (node.Operator == DefaultOperators.BinaryDivision)
+            return new DivisionOperatorExpression(left, right).ToCompiledNode();
+
+        throw new UnknownOperatorCompilerException(node.Operator);
     }
 
     private static Function CreateFunction(FunctionSyntaxNode node, Expression expression)
