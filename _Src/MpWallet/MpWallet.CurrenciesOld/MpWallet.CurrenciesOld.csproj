@@ -5,10 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+        <RootNamespace>MpWallet.Currencies</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\MpWallet.Currencies\MpWallet.Currencies.csproj" PrivateAssets="all"/>
-    </ItemGroup>
 
 </Project>
