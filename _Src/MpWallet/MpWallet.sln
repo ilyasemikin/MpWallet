@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.CurrenciesOld", "MpWallet.CurrenciesOld\MpWallet.CurrenciesOld.csproj", "{05F1BACC-2229-4B79-A0AF-51044A9BC594}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Currencies", "MpWallet.Currencies\MpWallet.Currencies.csproj", "{217164F7-8F27-4CB2-8C3E-1856A871C72B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.ExchangeRates", "MpWallet.ExchangeRates\MpWallet.ExchangeRates.csproj", "{93A2886D-B557-41AB-B997-919B29B09522}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.ExchangeRates.Abstractions", "MpWallet.ExchangeRates.Abstractions\MpWallet.ExchangeRates.Abstractions.csproj", "{E109E5D6-87F4-4870-B86B-A1D4F01F4C9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Results", "MpWallet.Results\MpWallet.Results.csproj", "{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +20,21 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05F1BACC-2229-4B79-A0AF-51044A9BC594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{217164F7-8F27-4CB2-8C3E-1856A871C72B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{217164F7-8F27-4CB2-8C3E-1856A871C72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{217164F7-8F27-4CB2-8C3E-1856A871C72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{217164F7-8F27-4CB2-8C3E-1856A871C72B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93A2886D-B557-41AB-B997-919B29B09522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93A2886D-B557-41AB-B997-919B29B09522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93A2886D-B557-41AB-B997-919B29B09522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93A2886D-B557-41AB-B997-919B29B09522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E109E5D6-87F4-4870-B86B-A1D4F01F4C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E109E5D6-87F4-4870-B86B-A1D4F01F4C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E109E5D6-87F4-4870-B86B-A1D4F01F4C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E109E5D6-87F4-4870-B86B-A1D4F01F4C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

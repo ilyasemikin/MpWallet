@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MpWallet.Currencies\MpWallet.Currencies.csproj" />
+    <ProjectReference Include="..\MpWallet.ExchangeRates.Abstractions\MpWallet.ExchangeRates.Abstractions.csproj" />
+    <ProjectReference Include="..\MpWallet.Results\MpWallet.Results.csproj" />
+  </ItemGroup>
+
+</Project>
