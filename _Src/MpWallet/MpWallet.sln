@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.ExchangeRates.Abst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Results", "MpWallet.Results\MpWallet.Results.csproj", "{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.ExchangeRates.DependencyInjection.Microsoft", "MpWallet.ExchangeRates.DependencyInjection.Microsoft\MpWallet.ExchangeRates.DependencyInjection.Microsoft.csproj", "{59737A3E-EA3B-4543-BCB4-8899A27D66D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E43A7E1-8B4B-41DF-AD69-1CF8AFA04F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59737A3E-EA3B-4543-BCB4-8899A27D66D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59737A3E-EA3B-4543-BCB4-8899A27D66D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59737A3E-EA3B-4543-BCB4-8899A27D66D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59737A3E-EA3B-4543-BCB4-8899A27D66D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -42,6 +42,8 @@ public sealed class Currency
 
     public static bool TryGetByCode(string code, [NotNullWhen(true)] out Currency? currency)
     {
+        ArgumentException.ThrowIfNullOrEmpty(code);
+        
         return Instances.TryGetValue(code, out currency);
     }
 
