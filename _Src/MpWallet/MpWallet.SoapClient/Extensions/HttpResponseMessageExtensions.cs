@@ -6,6 +6,21 @@ namespace MpWallet.SoapClient.Extensions;
 
 public static class HttpResponseMessageExtensions
 {
+    public static async Task<XDocument> ReadSoapXmlBodyAsync(
+        this HttpResponseMessage response,
+        CancellationToken cancellationToken = default)
+    {
+        var xml = await response.Content.ReadAsStringAsync(cancellationToken);
+
+        var document = XDocument.Parse(xml);
+        XDocument? body;
+        if (!TryExtractSoapBody(document, SoapVersion.Soap11, out body) &&
+            !TryExtractSoapBody(document, SoapVersion.Soap12, out body))
+            throw new InvalidOperationException("Can't extract soap body from response");
+
+        return body;
+    }
+    
     public static async Task<T> ReadSoapBodyAsync<T>(
         this HttpResponseMessage response, 
         CancellationToken cancellationToken = default)
@@ -14,7 +29,7 @@ public static class HttpResponseMessageExtensions
         var xml = await response.Content.ReadAsStringAsync(cancellationToken);
 
         var document = XDocument.Parse(xml);
-        XElement? body;
+        XDocument? body;
         if (!TryExtractSoapBody(document, SoapVersion.Soap11, out body) &&
             !TryExtractSoapBody(document, SoapVersion.Soap12, out body))
             throw new InvalidOperationException("Can't extract soap body from response");
@@ -31,10 +46,15 @@ public static class HttpResponseMessageExtensions
     private static bool TryExtractSoapBody(
         XDocument document, 
         SoapVersion version, 
-        [NotNullWhen(true)] out XElement? body)
+        [NotNullWhen(true)] out XDocument? body)
     {
         var @namespace = version.ToXmlNamespace();
-        body = document.Descendants(@namespace + "Body").FirstOrDefault();
+        var descendant = document.Descendants(@namespace + "Body").FirstOrDefault();
+        
+        body = descendant is not null 
+            ? new XDocument(descendant.Elements()) 
+            : null;
+        
         return body is not null;
     }
 }

@@ -43,13 +43,7 @@ public sealed class RawSoapClient
         var content = new StringContent(envelope.ToString(), Encoding.UTF8, mediaType);
         
         if (action is not null)
-        {
             content.Headers.Add("SOAPAction", action);
-
-            if (version is SoapVersion.Soap12)
-                content.Headers.ContentType?.Parameters.Add(
-                    new NameValueHeaderValue("ActionParameter", $"\"{action}\""));
-        }
         
         return _httpClient.PostAsync(uri, content, cancellationToken);
     }
