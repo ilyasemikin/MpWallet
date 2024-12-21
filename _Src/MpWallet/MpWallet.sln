@@ -13,6 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Results", "MpWalle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.ExchangeRates.DependencyInjection.Microsoft", "MpWallet.ExchangeRates.DependencyInjection.Microsoft\MpWallet.ExchangeRates.DependencyInjection.Microsoft.csproj", "{59737A3E-EA3B-4543-BCB4-8899A27D66D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.ExchangeRates.Getters.CBR", "MpWallet.ExchangeRates.Getters.CBR\MpWallet.ExchangeRates.Getters.CBR.csproj", "{0631DFAD-C29E-44A6-A629-EED1474EFD67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.CBR.Client", "MpWallet.CBR.Client\MpWallet.CBR.Client.csproj", "{1CC1EE05-3ED9-4176-B09D-7801D916E854}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.SoapClient", "MpWallet.SoapClient\MpWallet.SoapClient.csproj", "{90863739-5DE8-43B3-8233-242EFB17590E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.SoapClient.IntegrationTests", "MpWallet.SoapClient.IntegrationTests\MpWallet.SoapClient.IntegrationTests.csproj", "{724D77F1-101B-4191-AC7B-22E0BE081CAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +50,21 @@ Global
 		{59737A3E-EA3B-4543-BCB4-8899A27D66D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59737A3E-EA3B-4543-BCB4-8899A27D66D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59737A3E-EA3B-4543-BCB4-8899A27D66D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0631DFAD-C29E-44A6-A629-EED1474EFD67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0631DFAD-C29E-44A6-A629-EED1474EFD67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0631DFAD-C29E-44A6-A629-EED1474EFD67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0631DFAD-C29E-44A6-A629-EED1474EFD67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC1EE05-3ED9-4176-B09D-7801D916E854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC1EE05-3ED9-4176-B09D-7801D916E854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC1EE05-3ED9-4176-B09D-7801D916E854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC1EE05-3ED9-4176-B09D-7801D916E854}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90863739-5DE8-43B3-8233-242EFB17590E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90863739-5DE8-43B3-8233-242EFB17590E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90863739-5DE8-43B3-8233-242EFB17590E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90863739-5DE8-43B3-8233-242EFB17590E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724D77F1-101B-4191-AC7B-22E0BE081CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724D77F1-101B-4191-AC7B-22E0BE081CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724D77F1-101B-4191-AC7B-22E0BE081CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724D77F1-101B-4191-AC7B-22E0BE081CAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,20 +1,19 @@
 ﻿using System.Collections.Frozen;
 using MpWallet.Currencies;
 using MpWallet.ExchangeRates.Abstractions;
-using MpWallet.ExchangeRates.Abstractions.Attributes;
 using MpWallet.Results;
 
 namespace MpWallet.ExchangeRates;
 
 public class ExchangeRatesGetter
 {
-    private readonly FrozenDictionary<CurrencyRatio, IExchangeRateExternalSourceGetter> _getters;
+    private readonly FrozenDictionary<CurrencyRatio, BaseExchangeRateExternalSourceGetter> _getters;
 
-    public ExchangeRatesGetter(IEnumerable<IExchangeRateExternalSourceGetter> getters)
+    public ExchangeRatesGetter(IEnumerable<BaseExchangeRateExternalSourceGetter> getters)
     {
         ArgumentNullException.ThrowIfNull(getters);
         
-        _getters = getters.ToFrozenDictionary(ExchangeRateExternalSourceGetterAttribute.Extract);
+        _getters = getters.ToFrozenDictionary(getter => getter.ProvidedRatio);
     }
 
     public async Task<Result<ExchangeRate, string>> GetAsync(CurrencyRatio ratio, CancellationToken cancellationToken)
