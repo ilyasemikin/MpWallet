@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.SoapClient.Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.CBR.Client.IntegrationTests", "MpWallet.CBR.Client.IntegrationTests\MpWallet.CBR.Client.IntegrationTests.csproj", "{AADD8892-3F45-4589-AC16-18F76C677C37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.Time", "MpWallet.Time\MpWallet.Time.csproj", "{6F34561D-FB5E-4F36-B0F0-598508B4FD75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpWallet.ExchangeRates.Getters.CBR.IntegrationTests", "MpWallet.ExchangeRates.Getters.CBR.IntegrationTests\MpWallet.ExchangeRates.Getters.CBR.IntegrationTests.csproj", "{F303B514-1FE5-49DF-A141-18EF9D47AC55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +76,13 @@ Global
 		{AADD8892-3F45-4589-AC16-18F76C677C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AADD8892-3F45-4589-AC16-18F76C677C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AADD8892-3F45-4589-AC16-18F76C677C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F34561D-FB5E-4F36-B0F0-598508B4FD75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F34561D-FB5E-4F36-B0F0-598508B4FD75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F34561D-FB5E-4F36-B0F0-598508B4FD75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F34561D-FB5E-4F36-B0F0-598508B4FD75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F303B514-1FE5-49DF-A141-18EF9D47AC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F303B514-1FE5-49DF-A141-18EF9D47AC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F303B514-1FE5-49DF-A141-18EF9D47AC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F303B514-1FE5-49DF-A141-18EF9D47AC55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

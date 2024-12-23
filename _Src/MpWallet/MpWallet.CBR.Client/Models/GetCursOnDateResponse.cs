@@ -2,16 +2,28 @@
 
 namespace MpWallet.CBR.Client.Models;
 
-[XmlRoot("ValuteData")]
-public class GetCursOnDateResponse
+[XmlRoot("GetCursOnDateXMLResponse", Namespace = "http://web.cbr.ru/")]
+public sealed class GetCursOnDateResponse
 {
-    [XmlElement("ValuteCursOnDate")]
-    public required ValuteCursOnDate[] Valutes { get; init; }
+    [XmlElement("GetCursOnDateXMLResult")]
+    public required GetCursOnDateResult Result { get; init; }
+
+    public sealed class GetCursOnDateResult
+    {
+        [XmlElement("ValuteData", Namespace = "")]
+        public required ValuteData Data { get; init; }
+    }
     
-    [XmlAttribute("OnDate")]
-    public required string OnDate { get; init; }
+    public sealed class ValuteData
+    {
+        [XmlElement("ValuteCursOnDate")]
+        public required ValuteCursOnDate[] Valutes { get; init; }
     
-    public class ValuteCursOnDate
+        [XmlAttribute("OnDate")]
+        public required string OnDate { get; init; }
+    }
+    
+    public sealed class ValuteCursOnDate
     {
         [XmlElement("Vname")]
         public required string Name { get; init; }
@@ -29,6 +41,6 @@ public class GetCursOnDateResponse
         public required string ChCode { get; init; }
         
         [XmlElement("VunitRate")]
-        public required string UnitRate { get; init; }
+        public required decimal UnitRate { get; init; }
     }
 }

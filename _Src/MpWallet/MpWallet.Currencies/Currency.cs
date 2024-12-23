@@ -49,7 +49,7 @@ public sealed class Currency
 
     public static Currency GetByCode(string code)
     {
-        return TryGetByCode(code, out Currency? currency)
+        return TryGetByCode(code, out var currency)
             ? currency
             : throw new InvalidOperationException($"Currency \"{code}\" is unknown");
     }

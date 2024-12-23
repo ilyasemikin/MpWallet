@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MpWallet.CBR.Client\MpWallet.CBR.Client.csproj" />
     <ProjectReference Include="..\MpWallet.ExchangeRates.Abstractions\MpWallet.ExchangeRates.Abstractions.csproj" />
+    <ProjectReference Include="..\MpWallet.Time\MpWallet.Time.csproj" />
   </ItemGroup>
 
 </Project>

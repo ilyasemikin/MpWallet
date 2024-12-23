@@ -1,4 +1,6 @@
-﻿namespace MpWallet.CBR.Client.IntegrationTests;
+﻿using System.Net;
+
+namespace MpWallet.CBR.Client.IntegrationTests;
 
 public class CbrClientTests
 {
@@ -12,7 +14,12 @@ public class CbrClientTests
         var response = await client.GetCursOnDateAsync(now);
 
         Assert.NotNull(response);
-        Assert.NotEmpty(response.OnDate);
-        Assert.NotEmpty(response.Valutes);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+        var result = response.TryGetBody(out var body);
+        Assert.True(result);
+        Assert.NotNull(body);
+        Assert.NotEmpty(body.Result.Data.OnDate);
+        Assert.NotEmpty(body.Result.Data.Valutes);
     }
 }
