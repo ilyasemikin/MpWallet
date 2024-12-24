@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using MpWallet.ExchangeRates.Implementations;
 
 namespace MpWallet.ExchangeRates.DependencyInjection.Microsoft;
 

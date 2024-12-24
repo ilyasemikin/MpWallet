@@ -61,5 +61,17 @@ public sealed class Currency
         public const string GBP = "GBP";
         public const string CHF = "CHF";
         public const string RUB = "RUB";
+
+        public static IEnumerable<string> All
+        {
+            get
+            {
+                yield return USD;
+                yield return EUR;
+                yield return GBP;
+                yield return CHF;
+                yield return RUB;
+            }
+        }
     }
 }

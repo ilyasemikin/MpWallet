@@ -15,4 +15,9 @@ public sealed class ExchangeRate
         Ratio = ratio;
         Value = value;
     }
+
+    public ExchangeRate(Currency antecedent, Currency consequent, decimal value)
+        : this(new CurrencyRatio(antecedent, consequent), value)
+    {
+    }
 }

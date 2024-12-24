@@ -3,9 +3,9 @@ using MpWallet.Currencies;
 using MpWallet.ExchangeRates.Abstractions;
 using MpWallet.Results;
 
-namespace MpWallet.ExchangeRates;
+namespace MpWallet.ExchangeRates.Implementations;
 
-public class ExchangeRatesGetter
+public class ExchangeRatesGetter : IExchangeRatesGetter
 {
     private readonly FrozenDictionary<CurrencyRatio, BaseExchangeRateExternalSourceGetter> _getters;
 
@@ -16,10 +16,12 @@ public class ExchangeRatesGetter
         _getters = getters.ToFrozenDictionary(getter => getter.ProvidedRatio);
     }
 
-    public async Task<Result<ExchangeRate, string>> GetAsync(CurrencyRatio ratio, CancellationToken cancellationToken)
+    public async Task<Result<ExchangeRate, string>> GetAsync(
+        CurrencyRatio ratio, 
+        CancellationToken cancellationToken = default)
     {
         if (!_getters.TryGetValue(ratio, out var getter))
-            return Result<ExchangeRate, string>.Failure("Getter for ratio not found");
+            return Result<ExchangeRate, string>.Failure("Getter for rate is not found");
 
         try
         {
