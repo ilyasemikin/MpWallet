@@ -22,6 +22,15 @@ public class MoneyTests
             new ExchangeRate(Currency.CHF, Currency.RUB, 114.3251m),
             new ExchangeRate(Currency.RUB, Currency.RUB, 1m));
     }
+
+    [Fact]
+    public void Constructor_ShouldThrowException_WhenCurrencyIsNull()
+    {
+        var exception = Record.Exception(() => new Money(0, null!));
+        
+        Assert.IsType<ArgumentNullException>(exception);
+        Assert.Equal("currency", ((ArgumentNullException)exception).ParamName);
+    }
     
     [Theory]
     [InlineData(Currency.Codes.USD)]

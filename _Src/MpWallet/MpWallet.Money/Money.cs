@@ -92,4 +92,14 @@ public sealed class Money : IEquatable<Money>
     {
         return new Money(money.Amount / divider, money.Currency);
     }
+
+    public static bool operator ==(Money left, Money right)
+    {
+        return Equals(left, right);
+    }
+
+    public static bool operator !=(Money left, Money right)
+    {
+        return !Equals(left, right);
+    }
 }
