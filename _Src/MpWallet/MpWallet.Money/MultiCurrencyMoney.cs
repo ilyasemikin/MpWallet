@@ -1,9 +1,10 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.ExchangeRates.Abstractions;
+using MpWallet.Money.Abstractions;
 
 namespace MpWallet.Money;
 
-public sealed class MultiCurrencyMoney
+public sealed class MultiCurrencyMoney : IMoney
 {
     public IReadOnlyList<Money> Parts { get; }
     
@@ -35,7 +36,7 @@ public sealed class MultiCurrencyMoney
         return $"{{{joined}}}";
     }
 
-    private static IReadOnlyList<Money> CreateParts(IEnumerable<Money> money)
+    private static Money[] CreateParts(IEnumerable<Money> money)
     {
         var amounts = new Dictionary<Currency, decimal>();
         foreach (var item in money)

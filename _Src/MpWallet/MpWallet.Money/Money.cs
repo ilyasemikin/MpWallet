@@ -1,10 +1,11 @@
 ﻿using MpWallet.Currencies;
 using MpWallet.ExchangeRates.Abstractions;
 using MpWallet.ExchangeRates.Extensions;
+using MpWallet.Money.Abstractions;
 
 namespace MpWallet.Money;
 
-public sealed class Money : IEquatable<Money>
+public sealed class Money : IMoney, IEquatable<Money>
 {
     public decimal Amount { get; }
     public Currency Currency { get; }
